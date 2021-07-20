@@ -34,5 +34,11 @@ npm run start
 
 {% hint style="success" %}
 Do you see `Server listening at http://0.0.0.0:8080` in your terminal? You can hit the timer on your speedrun because you're done!
+
+You can validate the functionality of the example by navigating to the configuration URLs for either of the CDS Hooks or Rest modules.
+
+[**http://localhost:8080/cds-services**](http://localhost:8080/cds-services)
+
+[**https://localhost:8080/metadata**](https://localhost:8080/metadata)\*\*\*\*
 {% endhint %}
 
