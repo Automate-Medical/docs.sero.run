@@ -1,4 +1,2 @@
 # SMART Apps
 
-S
-
