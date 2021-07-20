@@ -6,7 +6,7 @@ description: Can you make the leaderboard?
 
 ## 3, 2, 1...
 
-Ok, you need [Node LTS \(currently 14.x\) for your platform](https://nodejs.org/en/download/).
+Ok, you need [Node LTS \(currently 14.17.x\) for your platform](https://nodejs.org/en/download/).
 
 Next, install Sero.
 
@@ -22,11 +22,26 @@ npm i @sero.run/sero
  Some shells may require using `npm i "@sero.run/sero"`
 {% endhint %}
 
-Start the default example server which includes the user guides content, with:
+{% hint style="success" %}
+Did the install complete? You're done! Wow, that was fast. Try the challenge mode below or continue on to our first User Guide.
+{% endhint %}
+
+{% page-ref page="user-guides/start-a-cds-hooks-api.md" %}
+
+## Challenge mode
+
+Want to get Sero started as a contributor? Clone the project:
+
+```text
+git clone https://github.com/Automate-Medical/sero.git
+```
+
+Install the dependencies \(use `npm ci` for the speed boost\) and start the default example server which includes the user guides content, with:
 
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
+npm ci
 npm run start
 ```
 {% endtab %}
