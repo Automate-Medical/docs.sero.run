@@ -26,7 +26,7 @@ npm i @sero.run/sero
 Did the install complete? You're done! Wow, that was fast. Try the challenge mode below or continue on to our first User Guide.
 {% endhint %}
 
-{% page-ref page="user-guides/start-a-cds-hooks-api.md" %}
+{% page-ref page="user-guides/start-a-cds-hooks-api/" %}
 
 ## Challenge mode
 
