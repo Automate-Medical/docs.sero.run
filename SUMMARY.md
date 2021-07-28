@@ -28,7 +28,7 @@
   * [Decision Support APIs](decision-support/how-to-build/clinical-decision-support-hooks.md)
   * [Patient Access](decision-support/how-to-build/patient-access.md)
   * [Provider Directories](decision-support/how-to-build/provider-directories.md)
-  * [Claims](decision-support/how-to-build/claims.md)
+  * [Formularies](decision-support/how-to-build/claims.md)
   * [Open Source](decision-support/how-to-build/open-source.md)
   * [Compliance](decision-support/how-to-build/compliance.md)
   * [Deployment](https://www.automatemedical.com/)
