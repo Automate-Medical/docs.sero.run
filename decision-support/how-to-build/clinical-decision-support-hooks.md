@@ -1,6 +1,14 @@
+---
+description: Get information to doctors in the places they're already working
+---
+
 # Decision Support APIs
 
 ## What is a decision support API?
+
+{% hint style="success" %}
+\*\*\*\*[**Decision Support APIs are a supported feature in Sero.**](../../overview/user-guides/start-a-cds-hooks-api/)\*\*\*\*
+{% endhint %}
 
 A decision support API supports an existing health care workflow such as prescribing medication, by providing contextually relevant information, automation, and guidelines related to that workflow via a standardized API. 
 
