@@ -19,6 +19,8 @@ We are currently targeting support for [**1.1 STU 2 Ballot \(2020Sep\)**](https:
 | FHIR Authorization workflow | ❌ | Prefetch templates _must_ be filled |
 | Creating Services from FHIR PlanDefinitions | ❌ |  |
 | TouchStone CDSH 1.0 TestScript Conformance | ✔️\* |  |
+| DaVinci CRD | ❌ | Upcoming |
+| PAMA | ❌ |  |
 
 
 
