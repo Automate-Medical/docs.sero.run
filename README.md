@@ -11,6 +11,8 @@ description: "Sero is a toolkit for devs building in health by Automate Medical.
 * 😎 **Easy local env.** Run a local FHIR server for development with no additional dependencies. Put your Synthea output in a folder and it's instantly available as a local FHIR R4 REST API.
 * 📖 **Open source.** Apache License 2.0.
 
+![](.gitbook/assets/group-149.png)
+
 ### [Try Sero](https://github.com/automate-medical/sero)
 
 ```bash
