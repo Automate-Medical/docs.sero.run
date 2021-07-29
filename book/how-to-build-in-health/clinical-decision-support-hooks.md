@@ -32,13 +32,47 @@ Decision Support APIs help to create health care workflows that reduce burn out 
 
 > The CDS Hooks specification describes the RESTful APIs and interactions to integrate Clinical Decision Support \(CDS\) between CDS Clients \(typically Electronic Health Record Systems \(EHRs\) or other health information systems\) and CDS Services.
 
-A decision support API built with CDS Hooks is a RESTful HTTP API. 
+A decision support API built with CDS Hooks is a RESTful HTTP API. CDS Services and CDS Clients negotiate the exchange of decision support requests and responses. The framework defines a number of `hooks` which are pre-agreements about the minimum data requirements for a pre-defined workflow like viewing a patient record or signing a prescription order.
+
+CDS Services advertise their capabilities through a Discovery endpoint. Clients \(like an EHR\) trigger these capabilities. Clients provide FHIR Resources as required by the `hook` in the form of `context` and `prefetch` parameters. Services execute their own rules and return one or many Cards that present information, provide actionable suggestions, and initiate SMART App launch sequences.
 
 ![](../../.gitbook/assets/image.png)
 
-### Discovery
+#### Discovery
 
-### Requesting
+{% api-method method="get" host="https://sero-cds.fly.dev" path="/cds-services" %}
+{% api-method-summary %}
+Discovery
+{% endapi-method-summary %}
+
+{% api-method-description %}
+
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="" type="string" required=false %}
+
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```
+
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+#### Requesting
 
 ## Relevant 
 
