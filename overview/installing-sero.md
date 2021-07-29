@@ -36,24 +36,17 @@ Want to get Sero started as a contributor? Clone the project:
 git clone https://github.com/Automate-Medical/sero.git
 ```
 
-Install the dependencies \(use `npm ci` for the speed boost\) and start the default example server which includes the user guides content, with:
+Remember, you need [Node LTS \(currently 14.17.x\) for your platform](https://nodejs.org/en/download/). Then, install the dependencies:
 
 {% tabs %}
 {% tab title="Bash" %}
 ```bash
-npm ci
-npm run start
+npm install
 ```
 {% endtab %}
 {% endtabs %}
 
 {% hint style="success" %}
-Do you see `Server listening at http://0.0.0.0:8080` in your terminal? You can hit the timer on your speedrun because you're done!
-
-You can validate the functionality of the example by navigating to the configuration URLs for either of the CDS Hooks or Rest modules.
-
-[**http://localhost:8080/cds-services**](http://localhost:8080/cds-services)
-
-[**https://localhost:8080/metadata**](https://localhost:8080/metadata)\*\*\*\*
+That's... it actually. You should be able to build the project with `npm run build` and test it with `npm run test`
 {% endhint %}
 
