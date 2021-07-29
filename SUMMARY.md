@@ -19,18 +19,18 @@
 * [Example Projects](overview/example-projects/README.md)
   * [GoodRx CDS Price Comparison](overview/example-projects/goodrx-cds-price-comparison.md)
 
-## How to build in health <a id="decision-support"></a>
+## How to build in health <a id="book"></a>
 
-* [How to build in health care the easy way](decision-support/how-to-build/README.md)
-  * [Getting started](decision-support/how-to-build/getting-started.md)
-  * [FHIR](decision-support/how-to-build/fhir.md)
-  * [SMART Apps](decision-support/how-to-build/smart-apps.md)
-  * [Decision Support APIs](decision-support/how-to-build/clinical-decision-support-hooks.md)
-  * [Patient Access](decision-support/how-to-build/patient-access.md)
-  * [Provider Directories](decision-support/how-to-build/provider-directories.md)
-  * [Formularies](decision-support/how-to-build/claims.md)
-  * [Open Source](decision-support/how-to-build/open-source.md)
-  * [Compliance](decision-support/how-to-build/compliance.md)
+* [How to build in health care the easy way](book/how-to-build-in-health/README.md)
+  * [Getting started](book/how-to-build-in-health/getting-started.md)
+  * [FHIR](book/how-to-build-in-health/fhir.md)
+  * [SMART Apps](book/how-to-build-in-health/smart-apps.md)
+  * [Decision Support APIs](book/how-to-build-in-health/clinical-decision-support-hooks.md)
+  * [Patient Access](book/how-to-build-in-health/patient-access.md)
+  * [Provider Directories](book/how-to-build-in-health/provider-directories.md)
+  * [Formularies](book/how-to-build-in-health/claims.md)
+  * [Open Source](book/how-to-build-in-health/open-source.md)
+  * [Compliance](book/how-to-build-in-health/compliance.md)
   * [Deployment](https://www.automatemedical.com/)
 
 ## Sero Reference
