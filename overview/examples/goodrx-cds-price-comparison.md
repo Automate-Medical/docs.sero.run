@@ -45,7 +45,7 @@ import { comparePrice } from "./api.js";
 
 ### Options
 
-Every decision support service provided by a server in the CDS Hooks model identifies itself as part of a response to `/cds-services`. We define an options object that we will use in the construction of `Service`. Importantly, we declare that the `Service` expects to respond to the `order-select` hook request.
+Every decision support service provided by a server in the CDS Hooks model identifies itself as part of a response to `/cds-services`. We define an options object that we will use in the construction of `Service`. Importantly, we declare that the `Service` expects to respond to the [**`order-select`**](https://cds-hooks.hl7.org/hooks/order-select/2020May/order-select/) hook request.
 
 {% tabs %}
 {% tab title="TypeScript" %}
@@ -76,7 +76,7 @@ Every decision support request includes a context attribute that we validate the
 const { draftOrders }: { draftOrders: fhir4.Bundle } = request.context;
 ```
 
-The `order-select` hook _requires_ that a Bundle of FHIR Resources be provided at `draftOrders`, but those resources could be `NutritionOrder`, `ServiceRequest`, or `VisionPrescription` in addition to the one we care about: `MedicationRequest`. We filter the `draftOrders` for `MedicationRequest` resources.
+The `order-select` hook _requires_ that a Bundle of FHIR Resources be provided at `draftOrders`, but those resources could be `NutritionOrder`, `ServiceRequest`, or `VisionPrescription` in addition to the one we care about: [**`MedicationRequest`**](https://www.hl7.org/fhir/medicationrequest.html). We filter the `draftOrders` for `MedicationRequest` resources.
 
 ```typescript
 const medicationRequest = draftOrders.entry
@@ -90,7 +90,7 @@ If no `MedicationRequest` was found, we throw a `NoDecisionResponse` because we 
 if (!medicationRequest) throw new NoDecisionResponse();
 ```
 
-Otherwise, we _do_ have a ****[**MedicationRequest**](https://www.hl7.org/fhir/medicationrequest.html), so let's use the text associated with the request \(i.e. the "name" of the drug\) to make a price comparison request to the GoodRx Compare Price API \(here we have abstracted the API requirements into a small utility library\). The utility uses `async/await` but we can also make use of `Promise`:
+Otherwise, we _do_ have a `MedicationRequest`, so let's use the text associated with the request \(i.e. the "name" of the drug\) to make a price comparison request to the GoodRx Compare Price API \(here we have abstracted the API requirements into a small utility library\). The utility uses `async/await` but we can also make use of `Promise`:
 
 ```typescript
 const response = await comparePrice(medicationRequest);
