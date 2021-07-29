@@ -16,7 +16,7 @@
     * [Advanced Suggestions, FHIR Queries \(TODO\)](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/guides/smart.md)
   * [Start a local FHIR API](overview/guides/fhir-api.md)
-* [Example Projects](overview/examples/README.md)
+* [Examples](overview/examples/README.md)
   * [GoodRx CDS Price Comparison](overview/examples/goodrx-cds-price-comparison.md)
   * [Da Vinci CRD](overview/examples/davinci-crd.md)
 

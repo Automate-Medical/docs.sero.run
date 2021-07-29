@@ -9,7 +9,7 @@ description: >-
 ## Overview
 
 {% hint style="info" %}
-The complete source code for this example is available at [**example/goodrx-cds-price-comparison**](https://github.com/Automate-Medical/sero/tree/master/example/goodrx)\*\*\*\*
+The complete source code for this example is available at [**example/goodrx-cds-price-comparison**](https://github.com/Automate-Medical/sero/tree/master/example/goodrx-cds-price-comparison)\*\*\*\*
 {% endhint %}
 
 Transparency on drug pricing changes the ****[**decisions**](https://pubmed.ncbi.nlm.nih.gov/11025790/) [**doctors**](https://pubmed.ncbi.nlm.nih.gov/29255097/) [**make**](https://pubmed.ncbi.nlm.nih.gov/29321043/). Good data on what drugs cost _while they are prescribing them_ is both something \(1\) doctors say they want and \(2\) doctors who have the data have been shown to have reduced per-patient drug costs than those who do not. Meanwhile, open standards have emerged \([**CDS Hooks**](https://cds-hooks.hl7.org/)\) as a way of getting decision support to doctors directly inside of the EHR \(i.e. patient specific recommendations on drug pricing\).
