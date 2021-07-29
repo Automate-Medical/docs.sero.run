@@ -26,7 +26,7 @@ Decision Support APIs help to create health care workflows that reduce burn out 
 
 ## How do decision support APIs work?
 
-[Decision Support APIs have a long history](https://joshuakelly.substack.com/p/40-years-of-healthcare-decision-support). The current open standard is called [**CDS Hooks**](https://cds-hooks.hl7.org/). The
+[Decision Support APIs have a long history](https://joshuakelly.substack.com/p/40-years-of-healthcare-decision-support). The current open standard is called [**CDS Hooks**](https://cds-hooks.hl7.org/).
 
 ### CDS Hooks
 
