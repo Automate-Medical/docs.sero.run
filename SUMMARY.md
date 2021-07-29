@@ -16,9 +16,9 @@
     * [Advanced Suggestions, FHIR Queries \(TODO\)](overview/user-guides/start-a-cds-hooks-api/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/user-guides/start-a-smart-on-fhir-app.md)
   * [Start a local FHIR API](overview/user-guides/start-a-local-fhir-api.md)
-* [Example Projects](overview/example-projects/README.md)
-  * [GoodRx CDS Price Comparison](overview/example-projects/goodrx-cds-price-comparison.md)
-  * [Da Vinci CRD](overview/example-projects/davinci-crd.md)
+* [Example Projects](overview/examples/README.md)
+  * [GoodRx CDS Price Comparison](overview/examples/goodrx-cds-price-comparison.md)
+  * [Da Vinci CRD](overview/examples/davinci-crd.md)
 
 ## How to build in health <a id="book"></a>
 
