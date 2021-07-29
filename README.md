@@ -27,7 +27,7 @@ You can find information on FHIR, SMART Apps, CDS Hooks, Patient Access APIs, Pr
 Ready to dive in? Try the installation speed run.
 {% endhint %}
 
-{% page-ref page="overview/installing-sero.md" %}
+{% page-ref page="overview/install.md" %}
 
 
 

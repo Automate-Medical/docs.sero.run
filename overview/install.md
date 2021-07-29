@@ -2,7 +2,7 @@
 description: Can you make the leaderboard?
 ---
 
-# Installing Sero Speedrun
+# Installing Speedrun
 
 ## 3, 2, 1...
 

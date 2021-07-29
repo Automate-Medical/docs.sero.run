@@ -4,7 +4,7 @@
 
 ## Quickstart for Devs <a id="overview"></a>
 
-* [Installing Sero Speedrun](overview/installing-sero.md)
+* [Installing Speedrun](overview/install.md)
 * [User Guides](overview/guides/README.md)
   * [Start a CDS Hooks API](overview/guides/cds-hooks/README.md)
     * [Getting Started \(TODO\)](overview/guides/cds-hooks/getting-started-todo.md)
