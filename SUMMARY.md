@@ -22,7 +22,6 @@
 ## How to build in health <a id="book"></a>
 
 * [How to build in health care the easy way](book/how-to-build-in-health/README.md)
-  * [Getting started](book/how-to-build-in-health/getting-started.md)
   * [FHIR](book/how-to-build-in-health/fhir.md)
   * [SMART Apps](book/how-to-build-in-health/smart-apps.md)
   * [Decision Support APIs](book/how-to-build-in-health/clinical-decision-support-hooks.md)
