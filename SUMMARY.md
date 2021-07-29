@@ -18,6 +18,7 @@
   * [Start a local FHIR API](overview/user-guides/start-a-local-fhir-api.md)
 * [Example Projects](overview/example-projects/README.md)
   * [GoodRx CDS Price Comparison](overview/example-projects/goodrx-cds-price-comparison.md)
+  * [DaVinci CRD](overview/example-projects/davinci-crd.md)
 
 ## How to build in health <a id="book"></a>
 
