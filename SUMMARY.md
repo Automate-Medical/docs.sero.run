@@ -25,7 +25,7 @@
 * [How to build in health care the easy way](book/how-to-build-in-health/README.md)
   * [FHIR](book/how-to-build-in-health/fhir.md)
   * [SMART Apps](book/how-to-build-in-health/smart-apps.md)
-  * [Decision Support APIs](book/how-to-build-in-health/clinical-decision-support-hooks.md)
+  * [Decision Support APIs](book/how-to-build-in-health/decision-support-apis.md)
   * [Patient Access](book/how-to-build-in-health/patient-access.md)
   * [Provider Directories](book/how-to-build-in-health/provider-directories.md)
   * [Formularies](book/how-to-build-in-health/claims.md)
