@@ -8,7 +8,7 @@
 * [User Guides](overview/user-guides/README.md)
   * [Start a CDS Hooks API](overview/user-guides/start-a-cds-hooks-api/README.md)
     * [Getting Started \(TODO\)](overview/user-guides/start-a-cds-hooks-api/getting-started-todo.md)
-    * [What Is CDS Hooks? \(TODO\)](overview/user-guides/start-a-cds-hooks-api/what-is-cds-hooks-todo.md)
+    * [What Is CDS Hooks?](overview/user-guides/start-a-cds-hooks-api/what-is-cds-hooks-todo.md)
     * [Setup \(TODO\)](overview/user-guides/start-a-cds-hooks-api/setup-todo.md)
     * [Creating Your First Service \(TODO\)](overview/user-guides/start-a-cds-hooks-api/creating-your-first-service-todo.md)
     * [Prefetch and Context \(TODO\)](overview/user-guides/start-a-cds-hooks-api/prefetch-and-context-todo.md)

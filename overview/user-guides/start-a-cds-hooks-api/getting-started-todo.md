@@ -1,16 +1,16 @@
----
-description: Setting up your local dev environment to work with Sero.
----
-
 # Getting Started \(TODO\)
 
-This section is going to explain what life would be like without Sero 😭 \(list of what it was like for me \[@mason\] to get started learning CDS hooks\). 
+To implement a CDS hooks API from scratch, there are a lot of things you should know:
 
-Some tools make it easy, but the development experience isn't great. Thus we made sero. 
+* You need to conform to the specification
+* You need to dig deep into the documentation
+* You need to take care of integrating new changes when the specification changes
 
-## Introducing Sero - The Typescript Toolchain for CDS Hooks
+All of this is possible but leads to a bad developer experience. 
 
-Explain why Sero makes developing a CDS hooks API so great...
+## Sero makes building in healthcare easy
+
+Sero was made to ...
 
 ## What we'll be building
 
