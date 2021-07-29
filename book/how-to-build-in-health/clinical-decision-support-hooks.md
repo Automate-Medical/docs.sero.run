@@ -38,9 +38,9 @@ CDS Services advertise their capabilities through a Discovery endpoint. Clients 
 
 ![](../../.gitbook/assets/image.png)
 
-#### Discovery
+### Discovery
 
-{% api-method method="get" host="https://sero-cds.fly.dev" path="/cds-services" %}
+{% api-method method="get" host="" path="/cds-services" %}
 {% api-method-summary %}
 Discovery
 {% endapi-method-summary %}
@@ -72,7 +72,7 @@ Discovery
 {% endapi-method-spec %}
 {% endapi-method %}
 
-#### Requesting
+### Requesting
 
 ## Relevant 
 
