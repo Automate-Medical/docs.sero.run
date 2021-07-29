@@ -6,20 +6,14 @@ description: "Sero is a toolkit for devs building in health by Automate Medical.
 
 ## Sero is a toolkit for devs building in health
 
-* 🏍️ **Launch with SMART on FHIR or CDS Hooks fast.** The fastest way to build CDS Hooks Services for decision support APIs and SMART Apps for both practitioners and patients.
-* 🔥 **Work with JS/TS.** Create and consume FHIR \(and friends\) data sources, protocols, and APIs with end-to-end TypeScript or ES2020 JavaScript. Minimal production dependencies and good defaults \(native modules, Fastify, ajv\).
-* 😎 **Easy local env.** Run a local FHIR server for development with no additional dependencies. Put your Synthea output in a folder and it's instantly available as a local FHIR R4 REST API.
-* 📖 **Open source.** Apache License 2.0.
+* 🏍️ **Launch SMART on FHIR Apps and Decision Support APIs fast**
+* 🔥 **Work with modern JavaScript \(ES2020 and TypeScript\)**
+* 😎 **Easy local FHIR REST server for testing**
+* 📖 **Open source license with development sponsored by Automate Medical**
 
 ![](.gitbook/assets/group-149.png)
 
-### [Try Sero](https://github.com/automate-medical/sero)
-
-```bash
-npm i @sero.run/sero
-```
-
-## Where you should go next
+## Where you should go first
 
 {% hint style="info" %}
 Understanding health APIs can be hard. **We've written a guide for building in health care the easy way.**
