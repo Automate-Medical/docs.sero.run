@@ -9,7 +9,7 @@ description: >-
 ## Overview
 
 {% hint style="info" %}
-The complete source code for this example is available at [**example/goodrx-cds-price-comparison**](https://github.com/Automate-Medical/sero/tree/master/example/goodrx-cds-price-comparison)\*\*\*\*
+The complete source code for this example is available at [**example/goodrx-cds-price-comparison**](https://github.com/Automate-Medical/sero/tree/master/example/goodrx-cds-price-comparison). CDS Clients can connect to the service for test purposes only at [**sero-goodrx-cds.fly.dev/cds-services**](https://sero-goodrx-cds.fly.dev/cds-services).
 {% endhint %}
 
 {% embed url="https://www.loom.com/share/cae38bf8e5f24c0c94a85e5adf60684f" caption="A full demo of this example." %}
