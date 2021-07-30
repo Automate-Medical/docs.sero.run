@@ -62,10 +62,12 @@ In your `package.json`, we're going to add a new script that runs the node serve
 }
 ```
 
-To run the server, run `node start`. You should now see this:
+To run the server, run `npm run start`. You should now see this:
 
 ```bash
+> cds-hooks-api-guide@1.0.0 start
 > node src/index.js
+
 Sero booting at http://0.0.0.0:8080
 ```
 

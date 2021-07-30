@@ -14,15 +14,15 @@ Again, this is NOT necessary if you’ve just finished the previous lesson.
 git clone (sero-example-repo-url-here)
 ```
 
-## More on services
+With this step we are also going to use Sero to make our first API, and make a request to it with the CDS Hooks sandbox. This models a CDS client. 
 
-Hopefully you saw \(this section\) already, but we are going to be creating our first service! With this step we are also going to use Sero to make our first API, and make a request to it with the CDS Hooks sandbox. This models a CDS client. 
+## Our first service
 
-## Our first service - mirror the current time
+In the `src` directory, create a folder called `current-time` and make two files inside: `get-current-time.js`. 
 
-This is what it is going to do
+Sero includes a `Service` class and a `Card` class. 
 
-Make a folder called `current-time` and make two files inside: `get-current-time.ts` and `index.ts`. These files are for building our service and. 
+## CDS clients, and tunneling to our service
 
 ## Deployment
 
