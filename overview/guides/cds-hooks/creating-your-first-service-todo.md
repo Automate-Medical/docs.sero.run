@@ -11,7 +11,7 @@ If you’re NOT continuing from the previous lesson, you can download, install, 
 Again, this is NOT necessary if you’ve just finished the previous lesson.
 
 ```bash
-git clone (sero-example-repo-url-here)
+git clone (url-in-progress)
 ```
 
 With this step we are also going to use Sero to make our first API, and make a request to it with the CDS Hooks sandbox. This models a CDS client. 
