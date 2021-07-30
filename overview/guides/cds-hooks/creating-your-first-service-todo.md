@@ -1,12 +1,12 @@
 ---
-description: Make a CDS service with CDS hooks that mirrors back the current time
+description: Making a CDS service with Sero
 ---
 
 # Creating Your First Service \(TODO\)
 
 ## Download starter code \(optional\)
 
-If you’re NOT continuing from the previous lesson, you can download, install, and run the starter code for this lesson below. This sets up a `sero-api` directory such that it’s identical to the result of the previous lesson.
+If you’re NOT continuing from the previous lesson, you can download, install, and run the starter code for this lesson below. This sets up a `cds-hooks-api-guide` directory such that it’s identical to the result of the previous lesson.
 
 Again, this is NOT necessary if you’ve just finished the previous lesson.
 
@@ -22,7 +22,7 @@ Hopefully you saw \(this section\) already, but we are going to be creating our 
 
 This is what it is going to do
 
-Make a folder called `current-time` and make two files inside: `get-current-time.ts` and `index.ts`. These files are for building our service and 
+Make a folder called `current-time` and make two files inside: `get-current-time.ts` and `index.ts`. These files are for building our service and. 
 
 ## Deployment
 

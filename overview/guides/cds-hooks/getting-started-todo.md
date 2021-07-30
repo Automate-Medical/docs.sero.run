@@ -1,3 +1,7 @@
+---
+description: Building a CDS service with Sero
+---
+
 # Getting Started \(TODO\)
 
 To implement a CDS hooks API from scratch, there are a lot of things you should know:
