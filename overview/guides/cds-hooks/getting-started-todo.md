@@ -1,28 +1,32 @@
 ---
-description: Building a CDS service with Sero
+description: Building a CDS service with Sero.
 ---
 
-# Getting Started \(TODO\)
+# Getting Started
 
-To implement a CDS hooks API from scratch, there are a lot of things you should know:
+To implement a CDS hooks API from scratch, there are a lot of things you need to consider:
 
-* You need to conform to the specification
-* You need to dig deep into the documentation
-* You need to take care of integrating new changes when the specification changes
+* You need to make sure you conform to the CDS hooks minimum specification
+* You need to familiarize yourself with CDS hooks and related concepts
+* You might want to add custom functionality that could quickly grow in complexity with a custom solution
 
-All of this is possible but leads to a bad developer experience. 
+This is all doable, but with constant updates and questions on conformance, it quickly becomes a chore to build new things with CDS hooks, and in healthcare in general.
 
 ## Sero makes building in healthcare easy
 
-Sero was made to ...
+Sero is a toolkit that makes building a decision support API as easy, and as fast, as possible. Along with this, Sero was made with technologies that ensure you have a great development experience. Sero includes:
 
-## What we'll be building
+* Fastify and AJV server validation
+* `Service`, `Card`, and other essential CDS Hooks modules
+* Updated specification conformance
 
-Going over the example...going to be making three hooks, one of which is pretty involved, another which is going to ask the implementer to do it almost all by themselves.
+## What you'll be building
 
-We are a doctor and we first view a record. We get a suggestion that this patient has not made an appointment in a while. The suggestion is to make a new appointment, and the link is for the SMART app to book the appointment. 
+In this walkthrough, you'll be building a decision support API with support for three CDS hooks. This tutorial serves as an "on-ramp" for building progressively more complicated CDS services. The walkthrough assumes no prior knowledge of CDS hooks or the specification, and some familiarity with FHIR.
 
-Later we have a hook for the encounter, which will help us make 
+The first service you'll build will respond with the current time upon an API call. The second service you'll build will process patient information upon invocation, and display that information. The final service you'll build will process even more patient information, and make smart suggestions based on prior medical observations.
 
-We'll be building this step by step, intdocucing concepts of CDS hooks and then explaining how Sero helps you with them...
+Before building each service, a topic in CDS Hooks or FHIR that will help you accomplish these tasks will be introduced. The scenarios will also be explained in more detail. 
+
+Let's get started!
 
