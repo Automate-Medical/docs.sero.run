@@ -10,11 +10,11 @@ To implement a CDS hooks API from scratch, there are a lot of things you need to
 * You need to familiarize yourself with CDS hooks and related concepts
 * You might want to add custom functionality that could quickly grow in complexity with a custom solution
 
-This is all doable, but with constant updates and questions on conformance, it quickly becomes a chore to build new things with CDS hooks, and in healthcare in general.
+This is all doable. Yet, with constant updates and questions of conformance, it quickly becomes a chore to build new features using CDS Hooks. 
 
 ## Sero makes building in healthcare easy
 
-Sero is a toolkit that makes building a decision support API as easy, and as fast, as possible. Along with this, Sero was made with technologies that ensure you have a great development experience. Sero includes:
+Sero is a toolkit that makes building a decision support API as easy and fast as possible. Along with this, Sero was made with technologies that ensure you have a great development experience. Sero includes:
 
 * Fastify and AJV server validation
 * `Service`, `Card`, and other essential CDS Hooks modules

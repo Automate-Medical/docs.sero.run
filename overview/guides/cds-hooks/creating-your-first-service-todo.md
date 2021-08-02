@@ -14,11 +14,17 @@ Again, this is NOT necessary if you’ve just finished the previous lesson.
 git clone (url-in-progress)
 ```
 
-With this step we are also going to use Sero to make our first API, and make a request to it with the CDS Hooks sandbox. This models a CDS client. 
+With this step you'll use Sero to make your first API, and make a request to it with the CDS Hooks sandbox.
 
 ## What you'll be building
 
 In this section of the walkthrough, you'll be building your first CDS service. This service is pretty simple: it'll mirror the current time back to the client that made the request. 
+
+## More on services and cards
+
+The concept of card was introduced last time...
+
+## The code
 
 ### Imports  
 
@@ -37,7 +43,7 @@ Our service will respond to the `patient-view` hook, or a workflow in which the 
 ```javascript
 const options = {
   id: "get-current-time",
-  title: "A CDS service that responds with the current time",
+  title: "Get the current time",
   hook: "patient-view",
   description:
     "This example shows how easy it is to make a CDS hooks service with Sero. This service responds with the current time after being invoked by the patient-view hook",
@@ -47,7 +53,7 @@ const options = {
 
 ### Service handler
 
-The service handler is an `async` function that runs when we get an HTTP `request` made to a service on our server \(in this case, `<server_url>/cds-services/get-current-time`\).  
+The service handler is an `async` function that runs when an HTTP `request` is made to a service on your server \(in this case, `<server_url>/cds-services/get-current-time`\).  
 
 ```javascript
 const handler = async (request) => {
@@ -90,9 +96,9 @@ export default new Service(options, handler);
 
 ### Calling our API
 
-For this part of the walkthrough, we will be using the [CDS Hooks sandbox](http://sandbox.cds-hooks.org/) to make requests to our server. 
+For this part of the walkthrough, you'll will be using the [CDS Hooks sandbox](http://sandbox.cds-hooks.org/) to make requests to our server. 
 
-Run the server with `npm run start`. Although our server is running locally, we are unable to make requests to it because it is not connected to the internet. We are going to use a tunneling service - namely, ngrok, to generate a public URL for our server so it can be seen by CDS clients designed to test your application.
+Run the server with `npm run start`. Although the server is running locally, you are unable to make requests to it because it is not connected to the internet. You are going to use a tunneling service - namely, ngrok, to generate a public URL for our server so it can be seen by CDS clients designed to test your application.
 
 ### Configuring ngrok
 
@@ -114,7 +120,7 @@ You should now see the following screen.
 
 ![CDS sandbox displaying the result of both patient-view hooks](../../../.gitbook/assets/exaple_1_result.png)
 
-The sandbox is now aware of two `patient-view` hooks: the hook that was there by default, and the hook   that we just added. You should see two cards on the left, with the new card being the card displaying the current time in 24-hour format.
+The sandbox is now aware of two `patient-view` hooks: the hook that was there by default, and the hook   that you just added. You should see two cards on the left, with the new card being the card displaying the current time in 24-hour format.
 
 Congratulations! You just built a CDS API and created your first service. In the next section you'll learn about how to deal with data requests made to your server, and how to work with that data.
 
