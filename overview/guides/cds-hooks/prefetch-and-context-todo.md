@@ -26,7 +26,7 @@ In the previous example, the service you made didn't require accessing the HTTP 
 
 ### Context
 
-If you make a CDS Hook \(`patient-view`, `appointment-book`, `encounter-start`, etc.\), for the service to work properly, the CDS client needs to provide . Context is a pre-defined agreement that is abstracted above the API level. 
+If you create a CDS Hook \(`patient-view`, `appointment-book`, `encounter-start`, etc.\), for your service to work properly, the CDS client needs to provide important contextual information to your service to work properly. This information is a pre-defined agreement specified by CDS Hooks that guarantees that this information will be provided by the CDS client. 
 
 For example, if you head over to the [specification](https://cds-hooks.org/hooks/patient-view/#context) for the `patient-view` hook \(which we are using in this walkthrough\), you can see that there are a few required keys that need to be provided to the CDS service when a request is made to it by the CDS client. In this example, `userId` and `patientId` are required, and `encounterId` is optional. This is because to perform useful actions for this hook, we need to know the current patient whose record is being viewed, the user who is viewing the record, and we only _might_ need to know the identity of the current encounter. For this example we won't.
 
