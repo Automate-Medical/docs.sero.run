@@ -355,6 +355,8 @@ export default new Service(options, handler);
 
 ### Configuring Logica
 
+If you are not continuing this walkthrough directly from the previous section, it is likely you stopped ngrok. Launch ngrok again and enter the command `ngrok http 0.0.0.0:8080` like last time. The public URL will change each time this command is run so be sure to account for that when making requests. 
+
 ### Calling our API
 
 Congratulations! You learned how to use context values provided by a CDS client to request additional information from the client to provide more advanced decision support. In the next section, you'll learn how to provide more advanced support through cards, and perform more advanced FHIR queries. 
