@@ -11,7 +11,7 @@
     * [What Is CDS Hooks?](overview/guides/cds-hooks/what-is-cds-hooks-todo.md)
     * [Setup](overview/guides/cds-hooks/setup-todo.md)
     * [Creating Your First Service](overview/guides/cds-hooks/creating-your-first-service-todo.md)
-    * [Prefetch and Context \(todo\)](overview/guides/cds-hooks/prefetch-and-context-todo.md)
+    * [Prefetch and Context](overview/guides/cds-hooks/prefetch-and-context-todo.md)
     * [Links, Suggestions, FHIR Queries \(todo\)](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/guides/smart.md)
   * [Start a local FHIR API](overview/guides/fhir-api.md)

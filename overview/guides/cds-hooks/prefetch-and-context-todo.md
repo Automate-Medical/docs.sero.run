@@ -2,7 +2,7 @@
 description: Processing request data
 ---
 
-# Prefetch and Context \(todo\)
+# Prefetch and Context
 
 ## Download starter code \(optional\)
 
