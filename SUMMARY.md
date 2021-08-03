@@ -27,9 +27,7 @@
   * [Decision Support APIs](book/how-to-build-in-health/decision-support-apis.md)
   * [Patient Access](book/how-to-build-in-health/patient-access.md)
   * [Provider Directories](book/how-to-build-in-health/provider-directories.md)
-  * [Formularies](book/how-to-build-in-health/claims.md)
-  * [Open Source](book/how-to-build-in-health/open-source.md)
-  * [Compliance](book/how-to-build-in-health/compliance.md)
+  * [Formulary](book/how-to-build-in-health/formulary.md)
   * [Deployment](https://www.automatemedical.com/)
 
 ## Sero Reference
