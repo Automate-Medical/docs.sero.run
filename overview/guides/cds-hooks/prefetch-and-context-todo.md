@@ -112,7 +112,7 @@ This will return a FHIR `Patient` and `Bundle` resource respectively.
 
 ### Helper functions
 
-To process this information quickly, you can make a new file called `util.js` and copy the following code into it.
+To process the patient's demographic information, such as their name and contact information, make a new file called `util.js` and copy the following code into it. For the purpose of this walkthrough, you can assume all of this information will be included in the patient FHIR resource \(although this is not guaranteed\).
 
 ```javascript
 /**
@@ -232,7 +232,7 @@ import {
 
 ### Service handler
 
-You can access the `patient` resource and the `encounter` bundle in the request body. 
+You can access the `patient` resource and the `encounter` resource in the request body. 
 
 ```javascript
 const handler = async (request) => {
@@ -245,7 +245,109 @@ const handler = async (request) => {
 }
 ```
 
-Now, make the cards. 
+Your service will return a card for every individual piece of demographic information. 
+
+```javascript
+return {
+    cards: [
+      // Name (only first name available)
+      new Card({
+        detail: `This patient has ${patientNames.length} name${
+          patientNames.length <= 1 ? "" : "s"
+        } on record.`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Now seeing: ${patientNames[0].given} ${patientNames[0].family}.`,
+        indicator: "info",
+      }),
+      // DOB
+      new Card({
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Date of birth: ${data.patient.birthDate}`,
+        indicator: "info",
+      }),
+      // If the patient is active in the system
+      new Card({
+        detail: `${data.patient.active === true ? "Yes" : "No"}`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Active`,
+        indicator: "info",
+      }),
+      // Address (only first address available)
+      new Card({
+        detail: `${addresses[0].line}, ${addresses[0].city}, ${addresses[0].state} ${addresses[0].postalCode}`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Current Address`,
+        indicator: "info",
+      }),
+      // Gender
+      new Card({
+        detail: `${data.patient.gender}`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Gender`,
+        indicator: "info",
+      }),
+      // Telecom (only first piece of contact information available)
+      new Card({
+        detail: `${telecom[0].value}`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Contact`,
+        indicator: "info",
+      }),
+      // Information on the last encounter
+      new Card({
+        detail: `Last visit was on ${
+          encounters.pop().resource.period.start
+        }. There are ${encounters.length} encounter${
+          encounters.length <= 1 ? "" : "s"
+        } on record.`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Last visit`,
+        indicator: "info",
+      }),
+      // Seeing the last encounter information
+      new Card({
+        detail: `Make a new appointment? ${
+          newApp[0] === true ? "Yes" : "No"
+        }, last appointment was ${newApp[1]} day${
+          newApp[1] > 1 ? "s" : ""
+        } ago.`,
+        source: {
+          label: "Automate Medical, Inc.",
+          url: "https://www.automatemedical.com/",
+        },
+        summary: `Book new appointment`,
+        indicator: "info",
+      }),
+    ],
+  };
+```
+
+Finally, export the service.
+
+```javascript
+export default new Service(options, handler);
+```
 
 ## Deployment \(todo\)
 
@@ -255,7 +357,5 @@ Now, make the cards.
 
 ### Calling our API
 
-Congratulations! You can go to the next section below.
-
-
+Congratulations! You learned how to use context values provided by a CDS client to request additional information from the client to provide more advanced decision support. In the next section, you'll learn how to provide more advanced support through cards, and perform more advanced FHIR queries. 
 
