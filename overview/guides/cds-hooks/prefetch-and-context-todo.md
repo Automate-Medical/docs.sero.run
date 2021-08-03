@@ -16,13 +16,13 @@ git clone (sero-example-repo-url-here)
 
 ## What you'll be building
 
-In this section, you'll be building a CDS service that, when invoked, returns demographic information about the patient that is sent in the request. The service will also determine if the patient needs to be seen by the clinic that made the request based on their last encounter at the clinic. 
+In this section, you'll be building a CDS service that, when invoked, returns cards displaying demographic information about a patient being viewed by the CDS client. The service will determine if the last encounter date of the patient based on their encounter history, and suggest that an appointment be booked again if it has been too long since their last appointment. 
 
-This service will also be invoked with the `patient-view` hook. This hook would be used in a situation where the user of the CDS client was viewing the patients medical record and needed some relevant demographic information.
+This service will also be invoked with the `patient-view` hook.
 
 ## Prefetch and Context
 
-In the previous example, the HTTP `request` body was not used. Although this was not necessary to respond with _something_ to the request, services that compute recommendations need to make use of both **contextual** and **FHIR** data. 
+In the previous example, the service you made didn't require accessing the HTTP `request` body. Although this is not necessary to make a response to a request, services that compute useful recommendations need to access the **contextual** information in the request, and request more **FHIR** data if needed through **prefetch templates**. 
 
 ### Context
 
@@ -64,7 +64,7 @@ If your service needs extra information from the client in order to perform a ta
 
 ### Imports
 
-In the `src` directory, create a folder called `prefetch-context` and after `cd`'ing into it, create the file `prefetch-context.js`.  Import the `Service` and `Class` classes like last time. 
+In the `src` directory, create a folder called `prefetch-context`. `cd` into it and create the file `prefetch-context.js`.  Import the `Service` and `Class` classes like last time. 
 
 ```javascript
 import { Service, Card } from "@sero.run/sero";
