@@ -2,7 +2,7 @@
 description: Get information to doctors in the places they're already working
 ---
 
-# Decision Support APIs
+# Decision Support
 
 ## What is a decision support API?
 

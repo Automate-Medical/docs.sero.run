@@ -22,11 +22,12 @@
 ## How to build in health <a id="book"></a>
 
 * [How to build in health the easy way](book/how-to-build-in-health/README.md)
-  * [FHIR](book/how-to-build-in-health/fhir.md)
+  * [FHIR](book/how-to-build-in-health/fhir/README.md)
+    * [Try your first FHIR request](book/how-to-build-in-health/fhir/try-your-first-fhir-request.md)
   * [SMART Apps](book/how-to-build-in-health/smart-apps.md)
-  * [Decision Support APIs](book/how-to-build-in-health/decision-support-apis.md)
+  * [Decision Support](book/how-to-build-in-health/decision-support-apis.md)
   * [Patient Access](book/how-to-build-in-health/patient-access.md)
-  * [Provider Directories](book/how-to-build-in-health/provider-directories.md)
+  * [Provider Directory](book/how-to-build-in-health/provider-directory.md)
   * [Formulary](book/how-to-build-in-health/formulary.md)
   * [Deployment](https://www.automatemedical.com/)
 
