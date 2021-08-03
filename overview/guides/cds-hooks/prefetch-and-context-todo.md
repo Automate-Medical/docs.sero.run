@@ -28,11 +28,11 @@ In the previous example, the service you made didn't require accessing the HTTP 
 
 If you create a CDS Hook \(`patient-view`, `appointment-book`, `encounter-start`, etc.\), for your service to work properly, the CDS client needs to provide important contextual information to your service to work properly. This information is a pre-defined agreement specified by CDS Hooks that guarantees that this information will be provided by the CDS client. 
 
-For example, if you head over to the [specification](https://cds-hooks.org/hooks/patient-view/#context) for the `patient-view` hook \(which we are using in this walkthrough\), you can see that there are a few required keys that need to be provided to the CDS service when a request is made to it by the CDS client. In this example, `userId` and `patientId` are required, and `encounterId` is optional. This is because to perform useful actions for this hook, we need to know the current patient whose record is being viewed, the user who is viewing the record, and we only _might_ need to know the identity of the current encounter. For this example we won't.
+For example, if you head over to the [specification](https://cds-hooks.org/hooks/patient-view/#context) for the `patient-view` hook \(which we are using in this walkthrough\), you can see that there are required keys that need to be provided to the CDS service upon a hook request. In this example, `userId` and `patientId` are required, and `encounterId` is optional. This is because to perform useful actions for this hook, your service needs to know the current patient whose record is being viewed, the user who is viewing the record, and we only _might_ need to know the identity of the current encounter. For this example we won't.
 
 In general, it is implied that the CDS client, as a consumer of a service, will send the required values to the service to which it is making a request. As a developer of CDS services, you do not need to worry about providing any additional parameters for context. 
 
-If needed, you could retrieve it from the request body \(you do not need to for this walkthrough\). 
+If needed, you could retrieve it from the request body \(although it is not required for this walkthrough\). 
 
 ```javascript
 const handler = async (request) => {
@@ -42,19 +42,37 @@ const handler = async (request) => {
 
 ### Prefetch and prefetch template \(todo\)
 
-What if you need additional information from a FHIR database 
+What if you need additional information from a FHIR database in order to respond to a request? To serve complex requests, it is likely you will.
 
-A prefetch is a request that your service makes to the client to execute a FHIR path query. The value for the prefetch template is a FHIR query path.
+A **prefetch template** is an object containing FHIR queries that your service defines when it needs additional information from the CDS client. When present, the CDS client executes FHIR path queries and includes this FHIR data in the request body. 
 
-When we define services, if you need extra data. All you got from the context was the patientId - to do this job, we need some more information. The value can be anything, but the value has to be a FHIR resource path. This is basically a query. You can reference values in the context \(but only values that are castable to a string\). When the client consumes this service, they know it is a patient-view, and that it needs to send some necessary context values. It also sees that there is a prefetch template. If the client is a good client, it will execute the FHIR requests on its FHIR data source, and return the results of the query in an object called prefetch, with a key name matching the key name in the service configuration. 
+For example, the CDS client only provides basic contextual information by default. For the `patient-view` hook, this is only the `userId` and `patientId`. If your service wanted to recommend guidance based on a patients condition when this hook is invoked, you would use a **prefetch token**, or a FHIR query, to fetch this information. Below is the prefetch token that would accomplish this.
 
-Configure the values that we want in the pre-fetch template in the `options` variable like last time. The client will then execute the query on their FHIR data source and return it in the request with the name `request.prefetch` 
+```javascript
+"patient": "Patient/{{context.patientId}}",
+```
 
-Remember the context values? This is why the are necessary. 
+This is what the prefetch template would look like.
 
-In general, as a developer of a CDS hook, you should use prefetch templates whenever additional information is needed to perform . They, however, might not be required to perform some tasks. 
+```javascript
+"prefetch": {
+    "patient": "Patient/{{context.patientId}}",
+  }
+```
 
-### TL;DR
+To retrieve this prefetch data in the request body, you would assign it to a variable matching the name of the key associated with the query.
+
+```javascript
+const patient = request.prefetch.patient;
+```
+
+`patient` is now a FHIR patient resource. 
+
+The context values the hook provides are used in the prefetch template. For the example above, the `patientId` context value is used to execute the FHIR query on the client. The hook specifies which context values can be used in prefetch tokens. 
+
+In general, as a developer of a CDS hook, you should use prefetch templates whenever additional information is needed to perform. They are, however, optional parameters and might not be required to perform some actions, such as respond to the current time or fetch information from an external API.
+
+### Summary
 
 When a CDS client consumes your service, it knows to send important contextual information to the service. This depends on the hook, but expect the client to send these values. 
 
