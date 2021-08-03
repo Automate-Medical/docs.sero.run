@@ -1,7 +1,5 @@
 ---
-description: >-
-  Fast Health Interoperability Resources 101 for developers, doctors, founders,
-  and patients
+description: 'A short 101 guide for developers, doctors, founders, and patients'
 ---
 
 # FHIR
@@ -9,7 +7,7 @@ description: >-
 ## What is FHIR [🔥](https://emojipedia.org/fire/)?
 
 {% hint style="success" %}
-**FHIR is an acronym \(Fast healthcare Interoperability Resources\) and is pronounced like "fire"**
+**FHIR is an acronym \(Fast Healthcare Interoperability Resources\) and is pronounced like "fire"**
 {% endhint %}
 
 **FHIR is an interface for structured health data.** FHIR is also:
