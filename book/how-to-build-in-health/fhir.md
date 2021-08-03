@@ -24,11 +24,25 @@ description: >-
 
 ## FHIR is an API + document schema
 
-REST APIs are familiar to developers. FHIR is, in part, a RESTful API over ~150 Resources \(classes, entities, objects, tables, types\). Each Resource has GET, POST, PATCH, etc HTTP operations. Base Resources can be constrained or extended with Profiles that are a kind of a document schema.
+REST APIs are familiar to developers. FHIR is, in part, a RESTful API over ~150 Resources \(classes, entities, objects, tables, types\). Each Resource has GET, POST, PATCH, etc HTTP operations. Base Resources can be constrained or extended with Profiles that are a kind of a document schema. Documents are formatted as JSON and XML.
 
 {% hint style="success" %}
 It's easy to use a FHIR API because it's just REST!
 {% endhint %}
+
+## FHIR is friendly to patients
+
+
+
+## FHIR has momentum and relevance
+
+-
+
+-
+
+## Is FHIR the only standard?
+
+**No!** 
 
 {% api-method method="get" host="https://r4.smarthealthit.org/" path="metadata" %}
 {% api-method-summary %}
@@ -36,11 +50,17 @@ Try your first FHIR request
 {% endapi-method-summary %}
 
 {% api-method-description %}
-FHIR APIs are required to provide a **CapabilityStatement** at /metadata. You can make a curl request to this public FHIR test server, or even load it in your browser.
+FHIR APIs are required to provide a **CapabilityStatement** at /metadata. You can make a `curl` request to this public FHIR test server, or even load it in your browser.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
+{% api-method-query-parameters %}
+{% api-method-parameter name="mode" type="string" required=false %}
+One of  `full` , `normative` , `terminology`
+{% endapi-method-parameter %}
+{% endapi-method-query-parameters %}
+{% endapi-method-request %}
 
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
@@ -70,21 +90,7 @@ You will receive back a JSON document representation of the CapabilityStatement
 {% endapi-method-spec %}
 {% endapi-method %}
 
-## FHIR is friendly to patients
-
-
-
-## FHIR has momentum and relevance
-
--
-
--
-
--
-
-
-
-
+\*\*\*\*
 
 
 
