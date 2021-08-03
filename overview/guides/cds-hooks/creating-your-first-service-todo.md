@@ -90,7 +90,7 @@ export default new Service(options, handler);
 
 ## Deployment
 
-### Calling the API
+### Calling your API
 
 For this part of the walkthrough, you'll be using the [CDS Hooks sandbox](http://sandbox.cds-hooks.org/) to make requests to your server. 
 

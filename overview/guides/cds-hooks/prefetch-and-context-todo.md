@@ -78,7 +78,7 @@ When a CDS client consumes your service, it knows to send important contextual i
 
 If your service needs extra information from the client in order to perform a task, you provide a pre-fetch template when configuring your service. When a CDS client goes to make a request to your service, it knows to take the prefetch template, execute the FHIR path queries on its FHIR data source, and return a prefetch object whose keys match the keys of the request. It is common that context fields such as `context.patientId` will be needed to execute these searches - they can be accessed with the double-handlebars syntax, `{{ context.patientId}}`. 
 
-## The code \(todo\)
+## The code
 
 ### Imports
 
@@ -245,7 +245,7 @@ const handler = async (request) => {
 }
 ```
 
-Your service will return a card for every individual piece of demographic information. 
+Your service will return a card for every individual piece of demographic information. In addition to this, two cards will be returned that convey the total number of encounters on record assigned to the patient, and if the patient needs to book a new appointment based on the date of the last appointment. This is done in the `lastAppointment()` function. The function returns yes or no depending on the difference between the most recent encounter and the present date in number of days. The function sets the number of days to be 100 by default.
 
 ```javascript
 return {
@@ -349,15 +349,53 @@ Finally, export the service.
 export default new Service(options, handler);
 ```
 
-## Deployment \(todo\)
+## Deployment
 
 ### Logica Sandbox
 
+The [Logica sandbox](https://sandbox.logicahealth.org/) is a service created by [Logica](https://www.logicahealth.org/solutions/fhir-sandbox/) that's useful for developing and testing FHIR applications. For this walkthrough, you are going to take advantage of Logica's ability to act as a CDS client. As opposed to the CDS sandbox that you used in the previous example, the Logica sandbox provides access to richer patient information, custom data sources and EHRs, and support for . These are just some of the services the sandbox offers but are the features we will be using for this walkthrough. 
+
 ### Configuring Logica
 
-If you are not continuing this walkthrough directly from the previous section, it is likely you stopped ngrok. Launch ngrok again and enter the command `ngrok http 0.0.0.0:8080` like last time. The public URL will change each time this command is run so be sure to account for that when making requests. 
+Head to the Logica sandbox. After creating an account, select the "NEW SANDBOX" button in the "My Sandboxes" section. 
 
-### Calling our API
+Enter the following information, and select "CREATE."
+
+![Logica sandbox configuration](../../../.gitbook/assets/create_logica_sandbox.png)
+
+Be sure to select FHIR R4, as selecting another version of FHIR will configure Logica differently. You should now see the Logica dashboard.
+
+![Logica sandbox dashboard](../../../.gitbook/assets/logica_dash.png)
+
+If you are not continuing this walkthrough directly from the previous section, it is likely you no longer have ngrok running. Launch ngrok again and enter the command `ngrok http 0.0.0.0:8080` like last time. The public URL will change each time this command is run so be sure to account for that when making requests. 
+
+On the left sidebar, select "CDS Hooks." This is where you'll add your public URL. Select the "+" in the top-right corner. Fill out the form with the following information.
+
+![Registering a CDS Hooks API in the sandbox](../../../.gitbook/assets/logica_register_services.png)
+
+You should now see a screen that looks similar to this one.
+
+![List of registered CDS services in Logica](../../../.gitbook/assets/registered_services_link_1.png)
+
+### Calling your API
+
+When you register CDS services with Logica, all of the CDS services available at the provided link are listed. The preview shows two services: the service you made in the previous section that fetches the current time, and the service that you made in this section.
+
+Hover over the "Patient view with last encounter" service, and select "Launch." You should be prompted to select a practitioner. Logica simulates a scenario in which this hook would be called - in this case, a doctor named "Susan A. Clark" is the user of the CDS client will be viewing the profile of a patient in the client's database. After selecting Susan, click on the top patient, Adams, Daniel X, in the list of patients. 
+
+Logica then makes a request to your service and, after some time, responds with a list of cards.
+
+![Response from your service](../../../.gitbook/assets/cds_response_1.png)
+
+Logica, because it is a registered CDS client, sends along the info necessary for you to define prefetch values. If you scroll down some more you should see a card that says the date of the last encounter. 
+
+![Last encounter](../../../.gitbook/assets/last_encounter.png)
 
 Congratulations! You learned how to use context values provided by a CDS client to request additional information from the client to provide more advanced decision support. In the next section, you'll learn how to provide more advanced support through cards, and perform more advanced FHIR queries. 
+
+### Bonus: request and response bodies
+
+Logica lets you view the request and the response bodies whenever a request is made to a service. You can paginate over to them on the cards results page. 
+
+If you take a closer look at the `util.js` file that was provided, you can get a better idea for how to work with FHIR request bundles, and potentially how to handle cases in which data may or may not be present.
 
