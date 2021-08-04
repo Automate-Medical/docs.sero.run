@@ -16,7 +16,7 @@ git clone (sero-example-repo-url-here)
 
 ## What you'll be building
 
-In this section, you'll be building a CDS service that, when invoked, returns cards displaying demographic information about a patient being viewed by the CDS client. The service will determine if the last encounter date of the patient based on their encounter history, and suggest that an appointment be booked again if it has been too long since their last appointment. 
+In this section, you'll be building a CDS service that receives a request to display demographic information about a patient being viewed by the CDS client. The service will determine if the last encounter date of the patient based on their encounter history, and suggest that an appointment be booked again if it has been too long since their last appointment. 
 
 This service will also be invoked with the `patient-view` hook.
 
@@ -40,7 +40,7 @@ const handler = async (request) => {
 }
 ```
 
-### Prefetch and prefetch template \(todo\)
+### Prefetch and prefetch template
 
 What if you need additional information from a FHIR database in order to respond to a request? To serve complex requests, it is likely you will.
 
