@@ -42,8 +42,6 @@ const { log } = console;
 We start by initializing the Client with the `baseUrl` of the FHIR API and destructuring the operations we will use \(`searchType` and `read`\). Then, we make a search for Humana's `InsurancePlan` resources. We use `async` and call `next` because Sero generates yields paginated results for searches through an [iterator and a generator function](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-6.html).
 
 ```typescript
- * 
- */
 const { searchType, read } = Client("https://fhir.humana.com/api")
 
 const planSearch = await searchType("InsurancePlan").next()
