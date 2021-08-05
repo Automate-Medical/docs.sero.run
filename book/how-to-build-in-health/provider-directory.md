@@ -23,7 +23,7 @@ Provider directories help to answer questions about:
 * Accessibility and scheduling information, office hours, spoken languages
 * Organizations that provide health care services, available insurance plans, coverage locations
 
-### How do provider directories work?
+## How do provider directories work?
 
 In the United States, CMS regulated health plans are required to publish a public-facing [**FHIR API**](fhir/). Major plan payers like Humana, Aetna, and Optum have implemented a specific API called [**Da Vinci PDex Plan Net**](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/). 
 
@@ -36,7 +36,15 @@ Provider directories typically implement these FHIR Resources:
 * [Organization](http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-organization.html)
 * [Location](http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-location.html)
 
-![](../../.gitbook/assets/image%20%281%29.png)
+These are made available for third party application developers to query against. You can use the Sero Client library to easily make paginated search queries to these provider directories. 
+
+A simple illustration of the architecture:
+
+![An example Plan Net architecture implementation of a Provider Directory ](../../.gitbook/assets/image%20%281%29.png)
+
+Try out this example with a real Provider Directory API and the Sero toolkit:
+
+{% page-ref page="../../overview/examples/humana-hematology-specialist-search.md" %}
 
 
 

@@ -14,9 +14,10 @@
     * [Prefetch and Context](overview/guides/cds-hooks/prefetch-and-context-todo.md)
     * [Links, Suggestions, FHIR Queries \(todo\)](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/guides/smart.md)
-  * [Start a local FHIR API](overview/guides/fhir-api.md)
+  * [Connect to a FHIR API](overview/guides/connect-to-a-fhir-api.md)
 * [Examples](overview/examples/README.md)
   * [GoodRx CDS Price Comparison](overview/examples/goodrx-cds-price-comparison.md)
+  * [Humana Hematology Specialist Search](overview/examples/humana-hematology-specialist-search.md)
   * [Da Vinci CRD](overview/examples/davinci-crd.md)
 
 ## How to build in health <a id="book"></a>
@@ -36,9 +37,10 @@
 * [Changelog](sero-reference/changelog.md)
 * [Sero Manual](https://man.sero.run)
 * [CDS Hooks](sero-reference/cds-hooks.md)
+* [FHIR Client](sero-reference/fhir-client.md)
 * [SMART Apps](sero-reference/smart-apps.md)
 * [SMART Launch](sero-reference/smart-launch.md)
-* [Local FHIR Server](sero-reference/fhir-api.md)
+* [FHIR Server \(dev only\)](sero-reference/fhir-api.md)
 * [TypeScript](sero-reference/typescript.md)
 
 ## Deployment <a id="production"></a>
