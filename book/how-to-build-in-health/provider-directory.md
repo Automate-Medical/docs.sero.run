@@ -25,15 +25,18 @@ Provider directories help to answer questions about:
 
 ### How do provider directories work?
 
-In the United States, CMS regulated health plans are required to publish a public-facing [**FHIR API**](fhir/). Major plan payors/administrators like Humana, Aetna, and Optum 
+In the United States, CMS regulated health plans are required to publish a public-facing [**FHIR API**](fhir/). Major plan payers like Humana, Aetna, and Optum have implemented a specific API called [**Da Vinci PDex Plan Net**](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/). 
+
+Provider directories typically implement these FHIR Resources:
+
+* [InsurancePlan](http://hl7.org/fhir/R4/insuranceplan.html)
+* [Practitioner](http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-practitioner.html)
+* [PractitionerRole](http://hl7.org/fhir/R4/practitionerrole.html)
+* [HealthcareService](http://hl7.org/fhir/R4/healthcareservice.html)
+* [Organization](http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-organization.html)
+* [Location](http://hl7.org/fhir/us/core/STU3.1/StructureDefinition-us-core-location.html)
+
+![](../../.gitbook/assets/image%20%281%29.png)
 
 
-
-\*\*\*\*
-
-
-
-Under the CMS Interoperability and Patient Access final rule and the CMS Interoperability and Prior Authorization final rule, Medicaid FFS programs, CHIP FFS programs, Medicaid managed care plans, and CHIP managed care entities are required to make provider directory information available via the Provider Directory API. The CMS Interoperability and Patient Access final rule includes MA organizations. This API must be accessible via a public-facing digital endpoint on the payer’s website. The IG is the HL7 FHIR Da Vinci PDex Plan Net IG: Version STU 1.0.0.
-
-* [http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1)
 
