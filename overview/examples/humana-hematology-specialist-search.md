@@ -6,27 +6,25 @@ description: >-
 
 # Humana Hematology Specialist Search
 
-{% hint style="warning" %}
-**Coming soon**  
-  
-Please contact [**founders@automatemedical.com**](mailto:founders@automatemedical.com) if you are interested in this work.
-{% endhint %}
-
 ## Overview
 
-This example demonstrates how to use Sero to access [Provider Directory APIs](https://docs.sero.run/book/how-to-build-in-health/provider-directory) from health plan payers such as Humana. Using publicly accessible FHIR APIs, we are able to identify in-network specialists \(a hematologist in our example\) available for a given Humana plan. If you run the [Replit](https://replit.com/@jdjkelly/Humana-Specialist-Search) example, you will see an initial request made to find Humana Insurance Plans, and then subsequent requests made to identify eligible Hematologists for a given plan.
+{% hint style="info" %}
+The complete source code for this example is available at [**example/humana-specialist-search**](https://github.com/Automate-Medical/sero/tree/master/example/humana-specialist-search).  Are you interested in accessing newly launched Provider Directory data? Contact [**founders@automatemedical.com**](mailto:founders@automatemedical.com)\*\*\*\*
+{% endhint %}
 
-{% embed url="https://replit.com/@jdjkelly/Humana-Specialist-Search" %}
+This example demonstrates how to use Sero to access ****[**Provider Directory APIs**](../../book/how-to-build-in-health/provider-directory.md) from health plan payers such as Humana. Using publicly accessible FHIR APIs, we are able to identify in-network specialists \(a hematologist in our example\) available for a given Humana plan.
 
+If you click play [▶️](https://emojipedia.org/play-button/) button in the [Replit](https://replit.com/@jdjkelly/Humana-Specialist-Search) below, you will see the full example running. An initial request is made to find Humana Insurance Plans. Subsequent requests made to identify eligible Hematologists for a given plan.
 
+{% embed url="https://replit.com/@jdjkelly/Humana-Specialist-Search" caption="Click the green play button for the full example to run" %}
 
 More information about Humana's API is available at [developers.humana.com](https://developers.humana.com/apis).
 
 ### Walkthrough
 
-Sero implements an Client that can make requests to [FHIR APIs](https://docs.sero.run/book/how-to-build-in-health/fhir). Provider Directories are a practical, real world example of life FHIR APIs in the wild. You can learn more about FHIR and Provider Directories in our [How to build in health the easy way](https://docs.sero.run/book/how-to-build-in-health/clinical-decision-support-hooks) ebook.
+Sero implements an [Client ](../../sero-reference/fhir-client.md)that can make requests to ****[**FHIR APIs**](https://docs.sero.run/book/how-to-build-in-health/fhir). Provider Directories are a practical, real world example of life FHIR APIs in the wild. You can learn more about FHIR and Provider Directories in our [**How to build in health the easy way**](https://docs.sero.run/book/how-to-build-in-health/clinical-decision-support-hooks) ebook.
 
-This code walkthrough will focus primarily on [humana.ts](.humana.ts), where we start by importing Sero and querying the Humana API.
+This code walkthrough will focus primarily on [humana.ts](https://github.com/Automate-Medical/sero/blob/master/example/humana-specialist-search/humana.ts), where we start by importing Sero and querying the Humana API.
 
 #### Imports
 
