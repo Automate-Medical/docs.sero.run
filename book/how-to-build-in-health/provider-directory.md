@@ -46,5 +46,8 @@ Try out this example with a real Provider Directory API and the Sero toolkit:
 
 {% page-ref page="../../overview/examples/humana-hematology-specialist-search.md" %}
 
+## Relevance
 
+* [CMS.gov Provider Directory FAQ \(part of Patient Access Final Ruling\)](https://www.cms.gov/about-cms/obrhi/faqs/faqs#112)
+* [CARIN HL7® FHIR® Directory Framework Initiative](https://carinfhirdirectory.com/)
 

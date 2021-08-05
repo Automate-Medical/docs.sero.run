@@ -5,7 +5,7 @@
 ## Quickstart for Devs <a id="overview"></a>
 
 * [Installing Speedrun](overview/install.md)
-* [User Guides](overview/guides/README.md)
+* [Guides](overview/guides/README.md)
   * [Start a CDS Hooks API](overview/guides/cds-hooks/README.md)
     * [Getting Started](overview/guides/cds-hooks/getting-started-todo.md)
     * [What Is CDS Hooks?](overview/guides/cds-hooks/what-is-cds-hooks-todo.md)
