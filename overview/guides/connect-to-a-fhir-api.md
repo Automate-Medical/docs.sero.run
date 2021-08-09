@@ -10,7 +10,15 @@ Looking for an explanation of FHIR? We cover FHIR in [**How to build in health t
 
 ## What is a FHIR API?
 
-A FHIR API is any HTTP server implementation of the [FHIR REST API](https://www.hl7.org/fhir/http.html). Communicating with a FHIR API is an essential task for many developers in health. Sero can be used to make requests to a FHIR API.
+A FHIR API is any HTTP server implementation of the [**FHIR REST API**](https://www.hl7.org/fhir/http.html). Communicating with a FHIR API is an essential task for many developers in health. Sero can be used to make requests to a FHIR API.
+
+FHIR APIs differ in what features and FHIR Resources work with each one. One FHIR API might make available information about insurance plans. Another might open access.
+
+## Sero supports connecting to FHIR APIs
+
+{% page-ref page="../../sero-reference/fhir-client.md" %}
+
+## Try your first FHIR request
 
 \*\*\*\*[**https://r4.smarthealthit.org/**](https://r4.smarthealthit.org/)\*\*\*\*
 
@@ -49,4 +57,6 @@ Metadata
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
+
 
