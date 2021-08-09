@@ -34,7 +34,7 @@ Metadata
 {% endapi-method-summary %}
 
 {% api-method-description %}
-The meta
+The metadata request returns a Resource describing all of the features of this particular FHIR server. It also contains basic information about the server and API itself. You can use the metadata request to determine if a FHIR API supports a particular FHIR Resource.
 {% endapi-method-description %}
 
 {% api-method-spec %}
