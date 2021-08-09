@@ -25,7 +25,7 @@ Provider directories help to answer questions about:
 
 ## How do provider directories work?
 
-In the United States, CMS regulated health plans are required to publish a public-facing [**FHIR API**](fhir/). Major plan payers like Humana, Aetna, and Optum have implemented a specific API called [**Da Vinci PDex Plan Net**](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/). 
+In the United States, CMS regulated health plans are required to publish a public-facing [**FHIR API**](fhir.md). Major plan payers like Humana, Aetna, and Optum have implemented a specific API called [**Da Vinci PDex Plan Net**](http://hl7.org/fhir/us/davinci-pdex-plan-net/STU1/). 
 
 Provider directories typically implement these FHIR Resources:
 
