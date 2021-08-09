@@ -10,7 +10,7 @@ To implement a CDS hooks API from scratch, there are a lot of things you need to
 * You need to familiarize yourself with CDS hooks and related concepts
 * You might want to add custom functionality that could quickly grow in complexity with a custom solution
 
-This is all doable. Yet, with constant updates and questions of conformance, it quickly becomes a chore to build new features using CDS Hooks. 
+This is all doable - however, with constant updates and questions of conformance, it quickly becomes a chore to build new features using CDS Hooks. 
 
 ## Sero makes building in healthcare easy
 
