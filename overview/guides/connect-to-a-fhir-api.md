@@ -22,11 +22,11 @@ You can use our FHIR Client to connect to FHIR APIs with JavaScript. See the Ser
 
 ## Try your first FHIR request
 
-\*\*\*\*[**https://r4.smarthealthit.org/**](https://r4.smarthealthit.org/)\*\*\*\*
+FHIR APIs have a base URL that serves as the root against which to make requests.
 
-You can create your own Sandbox server with Logica Health. Sero's CDS Hooks guides take you through that process as well.
+To test our first FHIR API, we're going to send a request to the FHIR API maintained by [smarthealthit.org](https://www.smarthealthit.org). The base URL for that server is **https://r4.smarthealthit.org.**
 
-It's just an HTTP API, here are some basic operations to test:
+The simplest operation we can make is a GET request to /metadata. This endpoint returns a [CapabilityStatement](https://www.hl7.org/fhir/capabilitystatement.html) describing all of the features a particular FHIR API supports. Using `curl` , Postman, or even your browser - try issuing a request to https://r4.smarthealthit.org/metadata.
 
 {% api-method method="get" host="https://r4.smarthealthit.org" path="/metadata" %}
 {% api-method-summary %}
@@ -34,14 +34,14 @@ Metadata
 {% endapi-method-summary %}
 
 {% api-method-description %}
-
+The meta
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-path-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-parameter name="\_format" type="string" required=false %}
+One of \`json\` or \`xml\`
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 {% endapi-method-request %}
