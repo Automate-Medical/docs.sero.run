@@ -26,7 +26,7 @@ In the previous example, the service you made didn't require accessing the HTTP 
 
 ### Context
 
-If you create a CDS Hook \(`patient-view`, `appointment-book`, `encounter-start`, etc.\), for your service to work properly, the CDS client needs to provide important contextual information to your service to work properly. This information is a pre-defined agreement specified by CDS Hooks that guarantees that this information will be provided by the CDS client. 
+If you create a CDS Hook \(`patient-view`, `appointment-book`, `encounter-start`, etc.\), the CDS client needs to provide important contextual information to your service for the service to work properly. This information is a pre-defined agreement specified by CDS Hooks that guarantees that this information will be provided by the CDS client. 
 
 For example, if you head over to the [specification](https://cds-hooks.org/hooks/patient-view/#context) for the `patient-view` hook \(which we are using in this walkthrough\), you can see that there are required keys that need to be provided to the CDS service upon a hook request. In this example, `userId` and `patientId` are required, and `encounterId` is optional. This is because to perform useful actions for this hook, your service needs to know the current patient whose record is being viewed, the user who is viewing the record, and we only _might_ need to know the identity of the current encounter. For this example we won't.
 
@@ -44,9 +44,9 @@ const handler = async (request) => {
 
 What if you need additional information from a FHIR database in order to respond to a request? To serve complex requests, it is likely you will.
 
-A **prefetch template** is an object containing FHIR queries that your service defines when it needs additional information from the CDS client. When present, the CDS client executes FHIR path queries and includes this FHIR data in the request body. 
+A [**prefetch template**](https://cds-hooks.org/specification/current/#prefetch-template) is an object containing FHIR queries that your service defines when it needs additional information from the CDS client. When present, the CDS client executes FHIR path queries and includes this FHIR data in the request body. 
 
-For example, the CDS client only provides basic contextual information by default. For the `patient-view` hook, this is only the `userId` and `patientId`. If your service wanted to recommend guidance based on a patients condition when this hook is invoked, you would use a **prefetch token**, or a FHIR query, to fetch this information. Below is the prefetch token that would accomplish this.
+For example, the CDS client only provides basic contextual information by default. For the `patient-view` hook, this is only the `userId` and `patientId`. If your service wanted to recommend guidance based on a patients condition when this hook is invoked, you would use a [**prefetch token**](https://cds-hooks.org/specification/current/#prefetch-tokens), or a FHIR query, to fetch this information. Below is the prefetch token that would accomplish this.
 
 ```javascript
 "patient": "Patient/{{context.patientId}}",
@@ -70,13 +70,13 @@ const patient = request.prefetch.patient;
 
 The context values the hook provides are used in the prefetch template. For the example above, the `patientId` context value is used to execute the FHIR query on the client. The hook specifies which context values can be used in prefetch tokens. 
 
-In general, as a developer of a CDS hook, you should use prefetch templates whenever additional information is needed to perform. They are, however, optional parameters and might not be required to perform some actions, such as respond to the current time or fetch information from an external API.
+In general, as a developer of a CDS hook, you should use prefetch templates whenever additional information is needed to perform an action. They are, however, optional parameters and might not be required to perform some actions, such as respond to the current time or fetch information from an external API.
 
 ### Summary
 
 When a CDS client consumes your service, it knows to send important contextual information to the service. This depends on the hook, but expect the client to send these values. 
 
-If your service needs extra information from the client in order to perform a task, you provide a pre-fetch template when configuring your service. When a CDS client goes to make a request to your service, it knows to take the prefetch template, execute the FHIR path queries on its FHIR data source, and return a prefetch object whose keys match the keys of the request. It is common that context fields such as `context.patientId` will be needed to execute these searches - they can be accessed with the double-handlebars syntax, `{{ context.patientId}}`. 
+If your service needs extra information from the client in order to perform a task, you provide a prefetch template when configuring your service. When a CDS client goes to make a request to your service, it knows to take the prefetch template, execute the FHIR path queries on its FHIR data source, and return a prefetch object whose keys match the keys of the request. It is common that context fields such as `context.patientId` will be needed to execute these searches - they can be accessed with the double-handlebars syntax, `{{context.patientId}}`. 
 
 ## The code
 
@@ -112,7 +112,7 @@ This will return a FHIR `Patient` and `Bundle` resource respectively.
 
 ### Helper functions
 
-To process the patient's demographic information, such as their name and contact information, make a new file called `util.js` and copy the following code into it. For the purpose of this walkthrough, you can assume all of this information will be included in the patient FHIR resource \(although this is not guaranteed\).
+To process the patient's demographic information, such as their name and contact information, make a new file called `util.js` in the same directory as `prefetch-context.js` and copy the following code into it. For the purpose of this walkthrough, you can assume all of this information will be included in the patient FHIR resource \(although this is not guaranteed\).
 
 ```javascript
 /**
@@ -353,7 +353,7 @@ export default new Service(options, handler);
 
 ### Logica Sandbox
 
-The [Logica sandbox](https://sandbox.logicahealth.org/) is a service created by [Logica](https://www.logicahealth.org/solutions/fhir-sandbox/) that's useful for developing and testing FHIR applications. For this walkthrough, you are going to take advantage of Logica's ability to act as a CDS client. As opposed to the CDS sandbox that you used in the previous example, the Logica sandbox provides access to richer patient information, custom data sources and EHRs, and support for . These are just some of the services the sandbox offers but are the features we will be using for this walkthrough. 
+The [Logica sandbox](https://sandbox.logicahealth.org/) is a service created by [Logica](https://www.logicahealth.org/solutions/fhir-sandbox/) that's useful for developing and testing FHIR applications. For this walkthrough, you are going to take advantage of Logica's ability to act as a CDS client. As opposed to the CDS sandbox that you used in the previous example, the Logica sandbox provides access to richer patient information, custom data sources and EHRs, and support for . The sandbox offers additional features, but those are the ones we will be using for this walkthrough.. 
 
 ### Configuring Logica
 
@@ -381,7 +381,7 @@ You should now see a screen that looks similar to this one.
 
 When you register CDS services with Logica, all of the CDS services available at the provided link are listed. The preview shows two services: the service you made in the previous section that fetches the current time, and the service that you made in this section.
 
-Hover over the "Patient view with last encounter" service, and select "Launch." You should be prompted to select a practitioner. Logica simulates a scenario in which this hook would be called - in this case, a doctor named "Susan A. Clark" is the user of the CDS client will be viewing the profile of a patient in the client's database. After selecting Susan, click on the top patient, Adams, Daniel X, in the list of patients. 
+Hover over the "Patient view with last encounter" service, and select "Launch." You should be prompted to select a practitioner. Logica simulates a scenario in which this hook would be called - in this case, a doctor named "Susan A. Clark" is the user of the CDS client who will be viewing the profile of a patient in the client's database. After selecting Susan, click on the top patient, Adams, Daniel X, in the list of patients. 
 
 Logica then makes a request to your service and, after some time, responds with a list of cards.
 

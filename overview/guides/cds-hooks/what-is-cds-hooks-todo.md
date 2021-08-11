@@ -26,5 +26,5 @@ A **CDS card** is a specific recommendation or suggestion made to the user of th
 
 ### Current specification
 
-The CDS hooks specification goes deeper in a number of areas - only some of which is going to be covered in this walkthrough. If you are curious and want to read more about the specification, it can be found here. 
+The CDS hooks specification goes deeper in a number of areas - only some of which is going to be covered in this walkthrough. If you are curious and want to read more about the specification, it can be found [here](https://cds-hooks.org). 
 
