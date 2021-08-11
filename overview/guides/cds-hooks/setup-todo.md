@@ -6,21 +6,23 @@ description: Setting up your Sero development environment
 
 ## Install the necessary packages
 
-Make sure you have at least node v14 installed globally on your machine. The latest version can be installed downloaded [here](https://nodejs.org/en/download/).
+Sero requires Node LTS \(v14.17.3 Make sure you have at least node v14 installed globally on your machine. The latest version can be installed downloaded [here](https://nodejs.org/en/download/).
 
-In a new terminal run `mkdir sero-api` and `cd` into it. Next run `npm init` to create a `package.json`, in which you can use the default settings. Next, install Sero:
+In a new terminal run `mkdir sero-api` and `cd` into it. Next run `npm init` to create a `package.json`, in which you can use the default settings. Next, install Sero.
 
-if you are using terminal, bash:
+{% tabs %}
+{% tab title="Bash" %}
+```
+npm i @sero.run/sero
+```
+{% endtab %}
 
+{% tab title="PowerShell" %}
 ```bash
 npm i --save @sero.run/sero
 ```
-
-If you are using PowerShell:
-
-```bash
-npm i --save "@sero.run/sero"
-```
+{% endtab %}
+{% endtabs %}
 
 ## Basic setup
 
