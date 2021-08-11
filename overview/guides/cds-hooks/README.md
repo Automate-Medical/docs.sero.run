@@ -6,7 +6,7 @@ Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a bro
 
 {% page-ref page="../../../book/how-to-build-in-health/decision-support-apis.md" %}
 
-## Getting started
+## Getting started [🏁](https://emojipedia.org/chequered-flag/)
 
 In this walkthrough, we will build three [decision support APIs](../../../book/how-to-build-in-health/decision-support-apis.md) growing in complexity. We will use Sero to implement our APIs according to the CDS Hooks specification.
 
@@ -45,4 +45,6 @@ To review:
 1. A **CDS Client** is an application that makes requests to a decision support service
 2. A **CDS Service** is an HTTP API that accepts requests containing patient information and provides decision support responses in the form of CDS Cards
 3. A **CDS Card** is a specific recommendation or suggestion made to the user of the CDS Client
+
+We're ready to setup our environment!
 
