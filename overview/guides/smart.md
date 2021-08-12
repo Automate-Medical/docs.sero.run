@@ -1,7 +1,5 @@
 # Start a SMART on FHIR App
 
-
-
 {% hint style="warning" %}
 ## Coming soon
 
