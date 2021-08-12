@@ -7,7 +7,7 @@ description: >-
 # Start a CDS Hooks API
 
 {% hint style="info" %}
-Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a broad overview of the topic in [**Build in Health the Easy Way**](https://docs.sero.run/book/build/fhir).
+Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a broad overview of the topic in [**Build in Health the Easy Way**](https://docs.sero.run/book/build/decision-support-apis).
 {% endhint %}
 
 {% page-ref page="../../../book/build/decision-support-apis.md" %}

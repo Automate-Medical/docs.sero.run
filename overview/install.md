@@ -12,15 +12,17 @@ Next, install Sero.
 
 {% tabs %}
 {% tab title="Bash" %}
-```bash
+```
 npm i @sero.run/sero
 ```
 {% endtab %}
-{% endtabs %}
 
-{% hint style="info" %}
- Some shells may require using `npm i "@sero.run/sero"`
-{% endhint %}
+{% tab title="PowerShell" %}
+```bash
+npm i "@sero.run/sero"
+```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="success" %}
 Did the install complete? You're done! Wow, that was fast. Try the challenge mode below or continue on to our first User Guide.
