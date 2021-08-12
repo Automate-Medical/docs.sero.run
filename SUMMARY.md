@@ -2,7 +2,7 @@
 
 * [Overview](README.md)
 
-## Quickstart for Devs <a id="overview"></a>
+## Quickstart for Devs 🏁 <a id="overview"></a>
 
 * [Installing Speedrun](overview/install.md)
 * [Guides](overview/guides/README.md)
