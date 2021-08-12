@@ -5,7 +5,7 @@ description: Make your first FHIR request. You'll learn about Sero too.
 # Connect to a FHIR API
 
 {% hint style="info" %}
-Looking for an explanation of FHIR? We cover FHIR in [**How to build in health the easy way**](../../book/how-to-build-in-health/fhir.md#what-is-fhir).
+Looking for an explanation of FHIR? We cover FHIR in [**Build in Health the Easy Way**](https://docs.sero.run/book/build/fhir).
 {% endhint %}
 
 ## What is a FHIR API?

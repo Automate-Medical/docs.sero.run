@@ -7,14 +7,14 @@ description: >-
 # Start a CDS Hooks API
 
 {% hint style="info" %}
-Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a broad overview of the topic in [**How to build in health the easy way**](../../../book/how-to-build-in-health/decision-support-apis.md).
+Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a broad overview of the topic in [**Build in Health the Easy Way**](https://docs.sero.run/book/build/fhir).
 {% endhint %}
 
-{% page-ref page="../../../book/how-to-build-in-health/decision-support-apis.md" %}
+{% page-ref page="../../../book/build/decision-support-apis.md" %}
 
 ## Getting started [🏁](https://emojipedia.org/chequered-flag/)
 
-In this walkthrough, we will build three [decision support APIs](../../../book/how-to-build-in-health/decision-support-apis.md) growing in complexity. We will use Sero to implement our APIs according to the CDS Hooks specification.
+In this walkthrough, we will build three [decision support APIs](../../../book/build/decision-support-apis.md) growing in complexity. We will use Sero to implement our APIs according to the CDS Hooks specification.
 
 No prior knowledge of the CDS Hooks specification is necessary but some basic familiarity with FHIR is advised.
 

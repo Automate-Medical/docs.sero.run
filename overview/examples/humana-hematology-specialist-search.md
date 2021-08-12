@@ -12,7 +12,7 @@ description: >-
 The complete source code for this example is available at [**example/humana-specialist-search**](https://github.com/Automate-Medical/sero/tree/master/example/humana-specialist-search).  Are you interested in accessing newly launched Provider Directory data? Contact [**founders@automatemedical.com**](mailto:founders@automatemedical.com)\*\*\*\*
 {% endhint %}
 
-This example demonstrates how to use Sero to access ****[**Provider Directory APIs**](../../book/how-to-build-in-health/provider-directory.md) from health plan payers such as Humana. Using publicly accessible FHIR APIs, we are able to identify in-network specialists \(a hematologist in our example\) available for a given Humana plan.
+This example demonstrates how to use Sero to access ****[**Provider Directory APIs**](../../book/build/provider-directory.md) from health plan payers such as Humana. Using publicly accessible FHIR APIs, we are able to identify in-network specialists \(a hematologist in our example\) available for a given Humana plan.
 
 If you click play [▶️](https://emojipedia.org/play-button/) button in the [Replit](https://replit.com/@jdjkelly/Humana-Specialist-Search) below, you will see the full example running. An initial request is made to find Humana Insurance Plans. Subsequent requests made to identify eligible Hematologists for a given plan.
 

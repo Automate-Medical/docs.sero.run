@@ -19,7 +19,7 @@ description: "Sero is a toolkit for devs building in health by Automate Medical.
 Understanding health APIs can be hard. **We've written a guide for building in health care the easy way.**
 {% endhint %}
 
-{% page-ref page="book/how-to-build-in-health/" %}
+{% page-ref page="book/build/" %}
 
 You can find information on FHIR, SMART Apps, CDS Hooks, Patient Access APIs, Provider Directories, and much more. In the process of building Automate Medical, we had to bootstrap this guide ourselves. We're sharing it publicly so that more builders and innovators can follow.
 

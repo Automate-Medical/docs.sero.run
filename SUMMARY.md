@@ -18,15 +18,15 @@
   * [Humana Hematology Specialist Search](overview/examples/humana-hematology-specialist-search.md)
   * [Da Vinci CRD](overview/examples/davinci-crd.md)
 
-## How to build in health <a id="book"></a>
+## For Founders, CTOs, and Devs <a id="book"></a>
 
-* [How to build in health the easy way](book/how-to-build-in-health/README.md)
-  * [FHIR](book/how-to-build-in-health/fhir.md)
-  * [SMART Apps](book/how-to-build-in-health/smart-apps.md)
-  * [Decision Support](book/how-to-build-in-health/decision-support-apis.md)
-  * [Patient Access](book/how-to-build-in-health/patient-access.md)
-  * [Provider Directory](book/how-to-build-in-health/provider-directory.md)
-  * [Formulary](book/how-to-build-in-health/formulary.md)
+* [Build in Health the Easy Way](book/build/README.md)
+  * [FHIR](book/build/fhir.md)
+  * [SMART Apps](book/build/smart-apps.md)
+  * [Decision Support](book/build/decision-support-apis.md)
+  * [Patient Access](book/build/patient-access.md)
+  * [Provider Directory](book/build/provider-directory.md)
+  * [Formulary](book/build/formulary.md)
   * [Deployment](https://www.automatemedical.com/)
 
 ## Sero Reference
