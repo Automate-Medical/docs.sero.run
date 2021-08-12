@@ -10,6 +10,10 @@ In this section, we'll be building a CDS service that receives a request to disp
 
 This service will also be invoked with the `patient-view` hook.
 
+{% hint style="info" %}
+You can find the complete source for this guide in the Sero project at [**example/cds-hooks-api-guide**](https://github.com/Automate-Medical/sero/tree/master/example/cds-hooks-api-guide)
+{% endhint %}
+
 ## Prefetch and Context
 
 In the previous example, the service we made didn't access the HTTP `request` body. Although this is not _necessary_ when responding to a request, services that compute useful recommendations need to access the **contextual** information in the request, and request more **FHIR** data if needed through **prefetch templates**. 
@@ -334,11 +338,37 @@ const handler = async (request) => {
 };
 ```
 
-Finally, export the service.
+Export the service.
 
 ```javascript
 export default new Service(options, handler);
 ```
+
+### Running the API
+
+In `index.js` , import the service.
+
+{% code title="index.js" %}
+```javascript
+import { Http, CDSHooks, start } from "@sero.run/sero";
+
+import compareTimeService from "./current-time/current-time.js";
+import prefetchContext from "./prefetch-context/prefetch-context.js";
+
+const config = {
+  cdsHooks: {
+    services: [compareTimeService, prefetchContext],
+    cors: true,
+  },
+};
+
+const http = Http(config);
+CDSHooks(config, http);
+start(http);
+```
+{% endcode %}
+
+Run the server with `npm run start`. 
 
 ## Deployment
 
