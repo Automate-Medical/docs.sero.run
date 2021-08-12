@@ -22,6 +22,10 @@ You can use our FHIR Client to connect to FHIR APIs with JavaScript. See the Ser
 
 ## Try your first FHIR request
 
+{% hint style="danger" %}
+You must be able to make HTTP requests to complete this guide - we recommend`curl` or [**Hoppscotch**](https://hoppscotch.io/)\*\*\*\*
+{% endhint %}
+
 FHIR APIs have a base URL that serves as the root against which to make requests.
 
 To test our first FHIR API, we're going to send a request to the FHIR API maintained by [smarthealthit.org](https://www.smarthealthit.org). The base URL for that server is **https://r4.smarthealthit.org.**
@@ -84,15 +88,15 @@ Another common kind of FHIR API request is _reading_ an individual Resource, lik
 
 Reading individual Resources is as easy as sending a GET request to `{Resource}/{id}` where {Resource} is the name of the Resource and {id} is the unique identifier for the record you are trying to read.
 
-For example, you can try requesting `Patient` with id `87a339d0-8cae-418e-89c7-8651e6aab3c6`.
-
 {% api-method method="get" host="https://r4.smarthealthit.org" path="/Patient/{id}" %}
 {% api-method-summary %}
 Reading a Resource
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Reading a Patient, or any Resource, is as simple as knowing the unique ID for the record, and 
+Reading a Patient, or any Resource, is as simple as knowing the unique ID for the record, and issuing a request where the last part of the path matches the unique ID of the record.  
+  
+For example, you can try requesting `Patient` with id `87a339d0-8cae-418e-89c7-8651e6aab3c6`.
 {% endapi-method-description %}
 
 {% api-method-spec %}
