@@ -18,6 +18,7 @@ We are currently targeting support for [**1.1 STU 2 Ballot \(2020Sep\)**](https:
 | Hook Request prefetch validation | ✔️ |  |
 | FHIR Authorization workflow | ❌ | Prefetch templates _must_ be filled |
 | Creating Services from FHIR PlanDefinitions | ❌ |  |
+| Executing CQL | ❌ |  |
 | TouchStone CDSH 1.0 TestScript Conformance | ✔️\* |  |
 | DaVinci CRD | ❌ | Upcoming example |
 | PAMA | ❌ |  |
