@@ -6,15 +6,33 @@
 There are ways for patients to access their data through APIs. Today, nearly 100 million US patients can share their data with application developers. ****[**Automate Medical**](https://www.automatemedical.com/), ****authors of the Sero toolkit, ****can help you get access.
 {% endhint %}
 
-Patient access is all about the ability for patients to access their own health data. As electronic health records have evolved, so too have the ways and means for patients to  access them.
+Patient access is all about the ability for patients to access their own health data. As electronic health records have evolved, so too have the ways and means for patients to access them.
 
-In the United States, [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) 
+Today, there are new patient access standards that enable app developers and startups to build experiences around patient health records without needing to seek the permission of anyone but the patient. In the United States, the [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) \(2016\) and [**Interoperability and Patient Access final rule** \(CMS-9115-F\)](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) ****form the foundation for adoption of an open patient access framework.
+
+The Patient Access final rule specifically mandates the use of FHIR, SMART, and USCDI \(technical standards we will discuss below\) by CMS-contract payers like Humana, Aetna, and Optum. **As of July 1, 2021, we are now in the enforcement period for having Patient Access APIs** available:
+
+> As of July 1, 2021, two of the policies from the May 2020 Interoperability and Patient Access final rule are now in effect... On July 1, 2021, CMS began to enforce requirements for certain payers to support Patient Access
+
+This impacts
 
 ### Opportunity
 
-* ~100 million CMS contracted beneficiaries
-* Friendly developer \(SMART + FHIR - see below\)
-* 
+As a result of 
+
+* ~100 million beneficiares in CMS programs, and growing - all of these patients have the ability to 
+* ~100 million CMS contracted beneficiaries - likely to grow beyond CMS with CARIN Alliance
+* Authorization model familiar to develoeprs \(SMART Auth is just OAuth 2.0\)
+* Lots of in the wild examples
+
+### Technical Standards
+
+We will cover , but at a high level 
+
+* [FHIR](fhir.md#what-is-fhir)
+* [SMART/OAuth 2.0](http://hl7.org/fhir/smart-app-launch/)
+* [United States Core Data for Interoperability \(USCDI\)](https://www.healthit.gov/isa/united-states-core-data-interoperability-uscdi)
+
 ### Challenges
 
 ## How does patient acccess work?
