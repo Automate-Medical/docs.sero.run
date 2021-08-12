@@ -166,7 +166,9 @@ The server can now be run with `npm run start`.
 
 For this part of the walkthrough, we'll be using the [**CDS Hooks sandbox**](http://sandbox.cds-hooks.org/) ****to make requests to our server. 
 
-Although the server is running locally, we are unable to make requests to it because it is not connected to the internet. You are going to use a tunneling service - namely ngrok, to generate a public URL for the server so it can be seen by CDS clients to test our newly-created API.
+{% hint style="info" %}
+The CDS Hooks Sandbox uses HTTPS. To test our local service, we need to host it behind an HTTPS url. We're going to use ngrok to do this by creating a public URL to our local server.
+{% endhint %}
 
 ### Configuring ngrok
 
