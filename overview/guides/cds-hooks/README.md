@@ -28,7 +28,7 @@ Let's get started!
 
 **CDS Hooks** is a specification describing how to create and use RESTful APIs to add clinical decision support to existing health care workflows. For example, presenting drug costs transparently to doctors while they are writing prescriptions or assessing the acceptable use of a diagnostic imaging service order.
 
-CDS Services and CDS Clients negotiate the exchange of decision support requests and responses. The framework defines a number of `hooks` which are pre-agreements about the minimum data requirements for a pre-defined workflow like viewing a patient record or signing a prescription order. 
+CDS Services and CDS Clients negotiate the exchange of decision support requests and responses. The framework defines a number of **Hooks** which are pre-agreements about the minimum data requirements for a pre-defined workflow like viewing a patient record or signing a prescription order.
 
 **CDS Clients** are applications that are responsible for making the request to a decision support service.
 

@@ -9,7 +9,7 @@
   * [Connect to a FHIR API](overview/guides/connect-to-a-fhir-api.md)
   * [Start a CDS Hooks API](overview/guides/cds-hooks/README.md)
     * [Setup](overview/guides/cds-hooks/setup.md)
-    * [Creating Our First Service](overview/guides/cds-hooks/creating-your-first-service.md)
+    * [Creating Our First Service](overview/guides/cds-hooks/creating-our-first-service.md)
     * [Prefetch and Context](overview/guides/cds-hooks/prefetch-and-context.md)
     * [Links, Suggestions, FHIR Queries \(in progress...\)](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/guides/smart.md)

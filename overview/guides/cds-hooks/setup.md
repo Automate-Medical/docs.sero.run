@@ -4,7 +4,7 @@ description: Setting up your Sero development environment
 
 # Setup
 
-## Install dependencies
+## Install Node + Sero
 
 We need to have the latest version of Node LTS installed. [It can be downloaded here](https://nodejs.org/en/download/).
 
@@ -13,21 +13,22 @@ In a new terminal run `mkdir sero-api` and `cd` into it. Next run `npm init` to 
 {% tabs %}
 {% tab title="Bash" %}
 ```
-npm i @sero.run/sero
+npm i --save @sero.run/sero
 ```
 {% endtab %}
 
 {% tab title="PowerShell" %}
 ```bash
-npm i --save @sero.run/sero
+npm i --save "@sero.run/sero"
 ```
 {% endtab %}
 {% endtabs %}
 
 ## Basic setup
 
-Create a `src` directory and `cd` in to it. Add an `index.js` file with the following contents:
+Create a `src` directory and `cd` into it. Add an `index.js` file with the following contents:
 
+{% code title="index.js" %}
 ```javascript
 import { Rest, Http, start } from "@sero.run/sero"
 
@@ -37,9 +38,11 @@ const http = Http(config);
 Rest(config, http);
 start(http);
 ```
+{% endcode %}
 
-In the`package.json`, we're going to add a new script that runs the node server, and set the type to `module`. The file should now look like this:
+In `package.json`, we're going to add a new script that runs the node server, and set the type to `module`. The file should now look like this:
 
+{% code title="package.json" %}
 ```javascript
 {
   "name": "cds-hooks-api-guide",
@@ -58,6 +61,7 @@ In the`package.json`, we're going to add a new script that runs the node server,
   "type": "module"
 }
 ```
+{% endcode %}
 
 To run the server, run `npm run start`. You should now see this:
 
@@ -68,5 +72,5 @@ To run the server, run `npm run start`. You should now see this:
 Sero booting at http://0.0.0.0:8080
 ```
 
-Great job! We're ready for the next section, where we will be creating a CDS service with Sero.
+Great job! We're ready for the next section, where we will be creating a CDS Service with Sero.
 
