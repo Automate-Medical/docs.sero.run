@@ -14,20 +14,20 @@ The Patient Access final rule specifically mandates the use of FHIR, SMART, and 
 
 > As of July 1, 2021, two of the policies from the May 2020 Interoperability and Patient Access final rule are now in effect... On July 1, 2021, CMS began to enforce requirements for certain payers to support Patient Access
 
-This impacts
-
 ### Opportunity
 
 As a result of 
 
-* ~100 million beneficiares in CMS programs, and growing - all of these patients have the ability to 
-* ~100 million CMS contracted beneficiaries - likely to grow beyond CMS with CARIN Alliance
-* Authorization model familiar to develoeprs \(SMART Auth is just OAuth 2.0\)
+* ~100 million beneficiares in CMS programs, and growing - all of these patients have the ability to allow you to access their health data from their plan administrator \("payer"\)
+* Uses an authorization and identity model familiar to developers \(the SMART Authorization 
 * Lots of in the wild examples
-
+* Permissionless
+* 
 ### Technical Standards
 
-We will cover , but at a high level 
+We will cover , but at a high level
+
+ CARIN BB 
 
 * [FHIR](fhir.md#what-is-fhir)
 * [SMART/OAuth 2.0](http://hl7.org/fhir/smart-app-launch/)
