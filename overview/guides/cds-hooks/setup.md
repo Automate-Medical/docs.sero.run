@@ -4,11 +4,11 @@ description: Setting up your Sero development environment
 
 # Setup
 
-## Install the necessary packages
+## Install dependencies
 
-Sero requires Node LTS \(v14.17.3 Make sure you have at least node v14 installed globally on your machine. The latest version can be installed downloaded [here](https://nodejs.org/en/download/).
+We need to have the latest version of Node LTS installed. [It can be downloaded here](https://nodejs.org/en/download/).
 
-In a new terminal run `mkdir sero-api` and `cd` into it. Next run `npm init` to create a `package.json`, in which you can use the default settings. Next, install Sero.
+In a new terminal run `mkdir sero-api` and `cd` into it. Next run `npm init` to create a new project. Then install Sero.
 
 {% tabs %}
 {% tab title="Bash" %}
@@ -26,7 +26,7 @@ npm i --save @sero.run/sero
 
 ## Basic setup
 
-Create `src` directory and `cd` in to it. Add an `index.js` file with the following contents:
+Create a `src` directory and `cd` in to it. Add an `index.js` file with the following contents:
 
 ```javascript
 import { Rest, Http, start } from "@sero.run/sero"
@@ -38,12 +38,7 @@ Rest(config, http);
 start(http);
 ```
 
-* `Rest` is 
-* `Http` is 
-* `start` is
-* `config` is 
-
-In your `package.json`, we're going to add a new script that runs the node server, and set the type to `module`. The file should now look like this:
+In the`package.json`, we're going to add a new script that runs the node server, and set the type to `module`. The file should now look like this:
 
 ```javascript
 {

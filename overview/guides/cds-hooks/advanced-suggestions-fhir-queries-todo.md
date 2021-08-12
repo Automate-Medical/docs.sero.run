@@ -2,7 +2,7 @@
 description: Links and advanced FHIR queries with Sero
 ---
 
-# Links, Suggestions, FHIR Queries \(todo\)
+# Links, Suggestions, FHIR Queries \(in progress...\)
 
 ## Download starter code \(optional\)
 
