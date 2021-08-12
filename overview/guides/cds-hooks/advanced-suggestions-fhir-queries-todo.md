@@ -4,31 +4,23 @@ description: Links and advanced FHIR queries with Sero
 
 # Links, Suggestions, FHIR Queries \(in progress...\)
 
-## Download starter code \(optional\)
+## What we'll be building
 
-If you’re NOT continuing from the previous lesson, you can download, install, and run the starter code for this lesson below. This sets up a `cds-hooks-api-guide` directory such that it’s identical to the result of the previous lesson.
+In this section, we'll be building a CDS service that calculates the Reynolds Risk score of a patient based on recent clinical observations. The service will return both a useful suggestion, and a link to a SMART app to further work with the information, based on the calculation. 
 
-Again, this is NOT necessary if you’ve just finished the previous lesson.
-
-```bash
-git clone (sero-example-repo-url-here)
-```
-
-## What you'll be building
-
-In this section, you'll be building a CDS service that calculates the Reynolds Risk score of a patient based on their recent observations, and returns both a useful suggestion based on this information, and a link to a SMART app to further work with the information.
-
-This service will also be invoked with the `patient-view` hook. This hook would be used in a situation where the user of the CDS client was viewing the patients medical record and needed some relevant demographic information.
+This service will also be invoked with the `patient-view` hook. 
 
 ### Reynolds risk score
 
-As opposed to the previous two sections, the service you'll build in this section is tailor-made to provide useful decision support for a common issue. The **Reynolds Risk Score** is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease in the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, cholesterol levels, and family history. 
+As opposed to the previous two sections, the service we'll build in this section is tailor-made to provide useful decision support for a real-world issue. 
 
-Your service will request recent patient observation information from the client that's used for this calculation, calculate the Reynolds risk score, and return a card conveying this information. By some metric, your service will also make suggestions to prescribe certain medications if the patients risk is high. Finally, your service will provide a link to a SMART app to further work with the support information that your service provided.
+The [**Reynolds Risk Score**](http://www.reynoldsriskscore.org/) is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease within the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, cholesterol levels, cigarette smoking status. 
 
-## Suggestions, links, and advanced FHIR queries
+The service we build will process the most recent patient observations in order to calculate this score. By some metric, the service will make suggestions to prescribe certain medications if the patients risk is high. Finally, the service will provide a link to a SMART app to further work with the support information that your service provided.
 
-Let's take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0/#card-attributes) of a `Card` from the CDS Hooks specification. There are attributes of CDS cards that can enhance a services decision support that you haven't yet worked with. Two of those attributes are **suggestions** and **links.** 
+## Suggestions and links
+
+We'll first take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0/#card-attributes) of a `Card` from the CDS Hooks specification. There are attributes of CDS cards that can enhance a service's decision support that we haven't worked with yet. Two of those attributes are **suggestions** and **links.** 
 
 ![](../../../.gitbook/assets/suggestions.png)
 
@@ -36,19 +28,65 @@ Let's take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0/#card
 
 ### Suggestions and actions 
 
-What if you wanted to provide more interactive decision support, such as suggesting the user read further into an issue, or even prescribe a medication? This is what **suggestions** are for.
+What if we wanted to provide more interactive decision support, such as suggesting the user read further into an issue, or even prescribe a medication? This is what **suggestions** are for.
 
-Suggestions are described by three attributes, with only a `label`, or a human-readable description of the action, being required. The following is an example of a suggestion with `label`, `uuid`, and `actions` properties.
+Suggestions are described by three attributes.  Only the `label`property - a human-readable description of the action - is required. The following is an example of a suggestion with the `label` and `actions` properties.
 
-\(code\)
+```javascript
+suggestions: [
+          {
+            label: "Create a prescription for Aspirin 80 MG oral Tablet",
+            actions: [
+              {
+                type: "create",
+                description:
+                  "Create a prescription for Aspirin 80 MG Oral Tablet",
+                resource: {
+                  ...
+                  // shortened for brevity
+                  ...
+                },
+              },
+            ],
+            request: {
+              method: "POST",
+              url: "MedicationRequest",
+            },
+          },
+        ],
+```
 
-**Actions** are suggestions a user can take when given a suggestion. In an interface that renders CDS cards, like Logica, actions will take the form of a button that, when pressed, will perform one of three basic actions: `create`, `update`, and `delete`. If the type of action is `create` or `update`, the action must include the `resource` field that's populated by a FHIR resource to be provided so that the action can be taken. 
+**Actions** are actions that the user of the CDS client take when given a suggestion. In an interface that renders CDS cards, like Logica, actions will look like a button that, when pressed, will perform one of the three types of actions: `create`, `update`, and `delete`. If the type of action is `create` or `update`, the action must include the `resource` field that's populated by a FHIR resource to be provided so that the action can be taken. 
 
 ### Links
 
-### Advanced FHIR queries: resources, searching, and sorting
+What if we wanted to provide links to external SMART apps or web pages? This is what **links** are for. 
 
-The main thing that we are going to do in this section is learn how to make **FHIR search queries.** This is di
+Links come in two varieties. `absolute` links take the user to an external website, such as a reference page or a paper. `smart` links are used to launch external SMART applications. SMART applications are healthcare applications designed to use the [SMART on FHIR API](https://smarthealthit.org/about-smart-2/). Think of them as healthcare applications that we can launch from a `Card` when we need enhanced functionality to deal with present FHIR data.
+
+Below is an example of an `absolute` link to google.com.
+
+```javascript
+links: [
+          {
+            label: "Google.com",
+            url: "https://google.com",
+            type: "absolute",
+          },
+        ],
+```
+
+Below is an example of a `smart` link to an external SMART app.
+
+```javascript
+links: [
+          {
+            label: "ASCVD Risk Calculator",
+            url: "https://launch.smarthealthit.org/v/r2/login?client_id=my_web_app&response_type=code&scope=patient%2FPatient.read%20patient%2FObservation.read%20launch%20online_access%20openid%20profile&redirect_uri=https%3A%2F%2Fengineering.cerner.com%2Fascvd-risk-calculator%2F&state=7d85ba03-ff89-7ec6-d3e6-38bc844ba085&aud=&launch=eyJhIjoxLCJmIjpmYWxzZSwiZyI6ZmFsc2UsImQiOi0xfQ&provider=&login_type=provider&aud_validated=1",
+            type: "smart",
+          },
+        ],
+```
 
 ## The code
 
