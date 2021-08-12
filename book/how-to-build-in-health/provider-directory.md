@@ -10,7 +10,7 @@ description: 'Access information about Insurance Plans, Coverage, Network'
 **Provider directory access is a supported feature in Sero, contact fou**[**nders@automatemedical.com** ](mailto:founders@automatemedical.com)**if you need provider directory data**
 {% endhint %}
 
-Provider directories are databases containing formation about insurance plans, practitioners \(like doctors and specialists\) and their roles \(the specific services offered\).
+Provider directories are databases containing information about insurance plans, practitioners \(like doctors and specialists\) and their roles \(the specific services offered\).
 
 > Provider directories play a critical role in enabling identification of individual providers and provider organizations, as well as characteristics about them. Provider directories support a variety of use cases. 
 >
