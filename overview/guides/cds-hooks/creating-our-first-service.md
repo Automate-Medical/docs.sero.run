@@ -100,7 +100,7 @@ const handler = async (request) => {
 
 Our handler now returns an object with a new `Card` containing information about the current time. Not exactly ground-breaking decision support, but we need to start somewhere!
 
-Finally, let's add a default export:
+To round off `get-current-time.js`, let's add a default export:
 
 {% code title="get-current-time.js" %}
 ```javascript
@@ -108,13 +108,65 @@ export default new Service(options, handler);
 ```
 {% endcode %}
 
+### Running the API
+
+Head back to `index.js` and import the service.
+
+{% code title="index.js" %}
+```javascript
+import { Http, CDSHooks, start } from "@sero.run/sero";
+
+import compareTimeService from "./current-time/current-time.js";
+
+const config = {
+  cdsHooks: {
+    services: [compareTimeService],
+    cors: true,
+  },
+};
+
+const http = Http(config);
+CDSHooks(config, http);
+start(http);
+```
+{% endcode %}
+
+In order to run the node server locally, `package.json` needs a new script, as well the `type` key set to `module`. 
+
+{% code title="package.json" %}
+```javascript
+{
+  "name": "cds-hooks-api-guide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sero.run/sero": "^0.0.16"
+  },
+  "type": "module"
+}
+```
+{% endcode %}
+
+{% hint style="info" %}
+The latest version of Sero may be different than the version used in this walkthrough
+{% endhint %}
+
+The server can now be run with `npm run start`. 
+
 ## Testing
 
-### Calling our API
+### Calling the API
 
 For this part of the walkthrough, we'll be using the [**CDS Hooks sandbox**](http://sandbox.cds-hooks.org/) ****to make requests to our server. 
 
-Run the server with `npm run start`. Although the server is running locally, we are unable to make requests to it because it is not connected to the internet. You are going to use a tunneling service - namely ngrok, to generate a public URL for the server so it can be seen by CDS clients to test our newly-created API.
+Although the server is running locally, we are unable to make requests to it because it is not connected to the internet. You are going to use a tunneling service - namely ngrok, to generate a public URL for the server so it can be seen by CDS clients to test our newly-created API.
 
 ### Configuring ngrok
 
