@@ -1,5 +1,5 @@
 ---
-description: Make your first FHIR request
+description: Make your first FHIR request. You'll learn about Sero too.
 ---
 
 # Connect to a FHIR API

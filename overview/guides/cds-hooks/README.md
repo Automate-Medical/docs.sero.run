@@ -1,3 +1,9 @@
+---
+description: >-
+  Create your first clinical decision support API and explore what's possible
+  with CDS Hooks
+---
+
 # Start a CDS Hooks API
 
 {% hint style="info" %}
@@ -26,9 +32,11 @@ Let's get started!
 
 ### Services, Clients, and Cards
 
-**CDS Hooks** is a specification describing how to create and use RESTful APIs to add clinical decision support to existing health care workflows. For example, presenting drug costs transparently to doctors while they are writing prescriptions or assessing the acceptable use of a diagnostic imaging service order.
+**CDS Hooks** is a specification describing how to create and use [RESTful APIs](https://en.wikipedia.org/wiki/Representational_state_transfer) to add clinical decision support to health care workflows in existing software like EHRs, patient apps, and backend services.
 
-CDS Services and CDS Clients negotiate the exchange of decision support requests and responses. The framework defines a number of **Hooks** which are pre-agreements about the minimum data requirements for a pre-defined workflow like viewing a patient record or signing a prescription order.
+For example, presenting drug costs transparently to doctors while they are writing prescriptions or assessing the acceptable use of a diagnostic imaging service order are both kinds of things you can build with CDS Hooks.
+
+CDS Services and CDS Clients negotiate the exchange of decision support requests and responses across the RESTful APIs. The framework defines a number of **Hooks** which are pre-agreements about the minimum data requirements for a pre-defined workflow like viewing a patient record or signing a prescription order.
 
 **CDS Clients** are applications that are responsible for making the request to a decision support service.
 
