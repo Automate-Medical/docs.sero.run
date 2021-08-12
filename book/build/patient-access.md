@@ -8,7 +8,13 @@ There are ways for patients to access their data through APIs. Today, nearly 100
 
 Patient access is all about the ability for patients to access their own health data. As electronic health records have evolved, so too have the ways and means for patients to access them.
 
-Today, there are new patient access standards that enable app developers and startups to build experiences around patient health records without needing to seek the permission of anyone but the patient. In the United States, the [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) \(2016\) and [**Interoperability and Patient Access final rule** \(CMS-9115-F\)](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) ****form the foundation for adoption of an open patient access framework.
+Today, there are new patient access standards that enable app developers and startups to build experiences around patient health records without needing to seek the permission of anyone but the patient. For nearly 100 million US patients, it's newly possible to build applications that:
+
+* Synchronize health records into a "local wallet" on a phone
+* Example 2 app
+* Example 3 app
+
+This is possible because the [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) \(2016\) and [**Interoperability and Patient Access final rule** \(CMS-9115-F\)](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) ****set the foundation for adoption of an open patient access framework.
 
 The Patient Access final rule specifically mandates the use of FHIR, SMART, and USCDI \(technical standards we will discuss below\) by CMS-contract payers like Humana, Aetna, and Optum. **As of July 1, 2021, we are now in the enforcement period for having Patient Access APIs** available:
 
