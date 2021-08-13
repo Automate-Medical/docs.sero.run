@@ -1,3 +1,7 @@
+---
+description: Patients deserve to have access to their health data. You can help them.
+---
+
 # Patient Access
 
 ## What is patient access?
