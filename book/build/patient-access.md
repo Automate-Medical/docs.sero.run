@@ -31,7 +31,7 @@ The Patient Access final rule specifically mandates the use of FHIR, SMART, and 
 
 As of July 1, 2021:
 
-* ~100 million beneficiares in CMS programs, and growing - all of these patients have the ability to allow you to access their health data from their plan administrator \("payer"\)
+* ~100 million beneficiaries in CMS programs, and growing - all of these patients have the ability to allow you to access their health data from their plan administrator \("payer"\)
 * Uses an authorization and identity model familiar to developers \(SMART, which is discussed below, is a OAuth 2.0 variant
 * Anti-blocking rules and industry bodies like the [CARIN Alliance](https://www.carinalliance.com) have developed strong rights of access for developers. In general, as long as you are a "processable entity", you can register your application with a payer's Patient Access API without needing any further permission.
 * Additionally, [CARIN Code of Conduct contains statements ](https://www.carinalliance.com/wp-content/uploads/2020/07/2020_CARIN_Code_of_Conduct_May-2020.pdf)re: apps using consumer directed-access. These apps do not fall under the scope of HIPAA covered entities - instead they fall under the scope of the FTC - a potential major source of reduction in "time to launch"
@@ -46,26 +46,32 @@ We will cover these in greater detail below, but as a summary reference point th
 * [SMART/OAuth 2.0](http://hl7.org/fhir/smart-app-launch/)
 * [United States Core Data for Interoperability \(USCDI\)](https://www.healthit.gov/isa/united-states-core-data-interoperability-uscdi)
 
-## How does patient acccess work?
+## How does patient access work?
 
-{% hint style="danger" %}
-The remainder of this page is a work in progress.
+{% hint style="warning" %}
+This section is being edited.
 {% endhint %}
 
-* CARIN BB 2.0
-* Payer data
+The reference for how patient access works in the US is the [**CARIN Consumer Directed Payer Data Exchange \(CARIN IG for Blue Button®\)**](http://hl7.org/fhir/us/carin-bb/STU1/)\*\*\*\*
 
-![](../../.gitbook/assets/image%20%284%29.png)
+\*\*\*\*
 
-### FHIR + SMART Authorization \(OAuth 2.0\)
-
-
+| Org | Developer Portal |
+| :--- | :--- |
+| Humana | [developers.humana.com](https://developers.humana.com/) |
+| United Healthcare, Optum | [uhc.com](https://www.uhc.com/legal/interoperability-apis) |
+| Aetna | [developerportal.aetna.com](https://developerportal.aetna.com/aetna/gettingstarted) |
+| Cigna | [developer.cigna.com](https://developer.cigna.com/documentation) |
+| Clover | [cloverhealth.com](https://www.cloverhealth.com/en/developers) |
+| Alignment | [alignmenthealthcare.com](https://www.alignmenthealthcare.com/api) |
+| Anthem | [anthem.com](https://www.anthem.com/microsites/dev-pgm/tnc.html) |
 
 ## Relevance
 
-1. The specific 
-
-
+* [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) \(2016\)
+* [Interoperability and Patient Access final rule \(CMS-9115-F\)](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index)
+* [CARIN Consumer Directed Payer Data Exchange \(CARIN IG for Blue Button®\)](http://hl7.org/fhir/us/carin-bb/STU1/)
+* [CARIN Code of Conduct](https://www.carinalliance.com/wp-content/uploads/2020/07/2020_CARIN_Code_of_Conduct_May-2020.pdf)
 
 
 
