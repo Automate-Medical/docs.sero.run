@@ -46,9 +46,11 @@ We will cover these in greater detail below, but as a summary reference point th
 * [SMART/OAuth 2.0](http://hl7.org/fhir/smart-app-launch/)
 * [United States Core Data for Interoperability \(USCDI\)](https://www.healthit.gov/isa/united-states-core-data-interoperability-uscdi)
 
-### Challenges
-
 ## How does patient acccess work?
+
+{% hint style="danger" %}
+The remainder of this page is a work in progress.
+{% endhint %}
 
 * CARIN BB 2.0
 * Payer data
