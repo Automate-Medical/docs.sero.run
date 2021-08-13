@@ -16,9 +16,11 @@ Today, there are new patient access standards that enable app developers and sta
 
 For nearly 100 million US patients, it's now possible to build applications that:
 
-* Allow users to give you permission to synchronize their health records into your app
-* Automatically identify unused health insurance benefits for patients
-* 
+* Allow users to synchronize their health records with your app
+* Automatically identify unused health insurance benefits
+* Provide personalized health feedback and opportunities
+* Improve the quality of care and outcomes for patient by "killing the fax"
+
 This is possible because the [21st Century Cures Act](https://en.wikipedia.org/wiki/21st_Century_Cures_Act) \(2016\) and [**Interoperability and Patient Access final rule** \(CMS-9115-F\)](https://www.cms.gov/Regulations-and-Guidance/Guidance/Interoperability/index) ****set the foundation for adoption of an open patient access framework.
 
 The Patient Access final rule specifically mandates the use of FHIR, SMART, and USCDI \(technical standards we will discuss below\) by CMS-contract payers like Humana, Aetna, and Optum. **As of July 1, 2021, we are now in the enforcement period for having Patient Access APIs** available:
