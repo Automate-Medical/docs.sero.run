@@ -29,18 +29,18 @@ The Patient Access final rule specifically mandates the use of FHIR, SMART, and 
 
 ### Opportunity
 
-As a result of 
+As of July 1, 2021:
 
 * ~100 million beneficiares in CMS programs, and growing - all of these patients have the ability to allow you to access their health data from their plan administrator \("payer"\)
-* Uses an authorization and identity model familiar to developers \(the SMART Authorization 
-* Lots of in the wild examples
-* Permissionless
-* 
+* Uses an authorization and identity model familiar to developers \(SMART, which is discussed below, is a OAuth 2.0 variant
+* Anti-blocking rules and industry bodies like the [CARIN Alliance](https://www.carinalliance.com) have developed strong rights of access for developers. In general, as long as you are a "processable entity", you can register your application with a payer's Patient Access API without needing any further permission.
+* Additionally, [CARIN Code of Conduct contains statements ](https://www.carinalliance.com/wp-content/uploads/2020/07/2020_CARIN_Code_of_Conduct_May-2020.pdf)re: apps using consumer directed-access. These apps do not fall under the scope of HIPAA covered entities - instead they fall under the scope of the FTC - a potential major source of reduction in "time to launch"
+
+![A diagram illustrating the scope of HIPAA covered entities from the CARIN Alliance](../../.gitbook/assets/screen-shot-2021-08-12-at-8.50.25-pm.png)
+
 ### Technical Standards
 
-We will cover , but at a high level
-
- CARIN BB 
+We will cover these in greater detail below, but as a summary reference point the following standards are the foundation for Patient Access:
 
 * [FHIR](fhir.md#what-is-fhir)
 * [SMART/OAuth 2.0](http://hl7.org/fhir/smart-app-launch/)
