@@ -11,7 +11,7 @@
     * [Setup](overview/guides/cds-hooks/setup.md)
     * [Creating Our First Service](overview/guides/cds-hooks/creating-our-first-service.md)
     * [Prefetch and Context](overview/guides/cds-hooks/prefetch-and-context.md)
-    * [Links, Suggestions, FHIR Queries \(in progress...\)](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
+    * [Links, Suggestions, and SMART apps](overview/guides/cds-hooks/advanced-suggestions-fhir-queries-todo.md)
   * [Start a SMART on FHIR App](overview/guides/smart.md)
 * [Examples](overview/examples/README.md)
   * [GoodRx CDS Price Comparison](overview/examples/goodrx-cds-price-comparison.md)

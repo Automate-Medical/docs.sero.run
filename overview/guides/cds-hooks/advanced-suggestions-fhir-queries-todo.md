@@ -1,26 +1,18 @@
 ---
-description: Links and advanced FHIR queries with Sero
+description: How to build advanced decision support with Sero
 ---
 
-# Links, Suggestions, FHIR Queries \(in progress...\)
+# Links, Suggestions, and SMART apps
 
 ## What we'll be building
 
-In this section, we'll be building a CDS service that calculates the Reynolds Risk score of a patient based on recent clinical observations. The service will return both a useful suggestion, and a link to a SMART app to further work with the information, based on the calculation. 
+In this section, we'll be building a CDS service that calculates the [Reynolds Risk score](http://www.reynoldsriskscore.org/) of a patient based on recent clinical observations. Based on the calculation, the service will return a suggestion that the patient be prescribed a medication to manage their high risk, a link to more information about the medication, and a link to a SMART app to further work with the information. 
 
 This service will also be invoked with the `patient-view` hook. 
 
 {% hint style="info" %}
 You can find the complete source for this guide in the Sero project at [**example/cds-hooks-api-guide**](https://github.com/Automate-Medical/sero/tree/master/example/cds-hooks-api-guide)
 {% endhint %}
-
-### Reynolds risk score
-
-As opposed to the previous two sections, the service we'll build in this section is tailor-made to provide useful decision support for a real-world issue. 
-
-The [**Reynolds Risk Score**](http://www.reynoldsriskscore.org/) is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease within the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, cholesterol levels, cigarette smoking status. 
-
-The service we build will process the most recent patient observations in order to calculate this score. By some metric, the service will make suggestions to prescribe certain medications if the patients risk is high. Finally, the service will provide a link to a SMART app to further work with the support information that your service provided.
 
 ## Suggestions and links
 
@@ -91,6 +83,24 @@ links: [
   },
 ],
 ```
+
+## SMART applications
+
+### Reynolds risk score
+
+As opposed to the previous two sections, the service we'll build in this section is tailor-made to provide useful decision support for a real-world issue. 
+
+The [**Reynolds Risk Score**](http://www.reynoldsriskscore.org/) is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease within the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, cholesterol levels, cigarette smoking status. 
+
+The service we build will process the most recent patient observations in order to calculate this score. By some metric, the service will make suggestions to prescribe certain medications if the patients risk is high. Finally, the service will provide a link to a SMART app to further work with the support information that your service provided.
+
+### What is a SMART app?
+
+A SMART app is a class of healthcare application that's designed to be used in healthcare settings that fit the requirements laid out by [SMART on FHIR](https://docs.smarthealthit.org/) - an open healthcare API. In this example, we are going to register a SMART app that takes a patients EHR, calculates that patients risk score, and displays helpful information to go along side it. Although the service that we create will also calculate that same patients risk score, the SMART app we will connect to will provide _enhanced_ support, such as helpful visualizations, and interventions that could decrease the patient's score. 
+
+We are going to use a SMART app called "cardiac-risk." This is a version of the [cardiac risk SMART app](https://apps.smarthealthit.org/app/cardiac-risk) that we've modified to work with the latest version of FHIR \(you can find the code [here](https://github.com/Automate-Medical/cardiac-risk-app/tree/feature/fly-hosting)\).
+
+![Cardiac-risk smart app](../../../.gitbook/assets/screely-1629210143233.png)
 
 ## The code
 
@@ -605,7 +615,7 @@ export default new Service(options, handler);
 
 ### Running the API
 
-In `index.js` , import the service.
+In `index.js`, import the service.
 
 {% code title="index.js" %}
 ```javascript
@@ -630,6 +640,66 @@ start(http);
 
 Run the server with `npm run start`. 
 
+## Deployment
+
+### Registering the SMART app in Logica
+
+Logica has the ability to register SMART apps into its interface, which can then be launched within the context of one of the CDS hooks. When we register a SMART app, we can use the EHRs that Logica creates to view patient data within the scope of the SMART app. 
+
+In Logica, there is a section where we can register SMART applications. Doing this allows us to take the EHRs that Logica generated for us, and pass that information directly to the SMART app for testing purposes. Because the service we made launches this SMART app, we are going to configure Logica to launch it. 
+
+On the left sidebar, select "Apps," and then select the "+" in the upper right. Click on "Manually" to set up the application manually. 
+
+![SMART app configuration page](../../../.gitbook/assets/screely-1629210407425.png)
+
+Enter the following details into the fields.
+
+![](../../../.gitbook/assets/screely-1629210366517.png)
+
+The image field can be left blank, or one can be added locally. After clicking save, this will register the cardiac risk smart app inside of Logica. Inside of one of the CDS cards that our service returns, we are going to launch this SMART app in order to provide extra context the calculated risk score.
+
+### Calling the API
+
+To re-fresh the list of CDS services, head to the "CDS Hooks" section in Logica, and delete the services you registered. 
+
+![Deleting the API from Logica](../../../.gitbook/assets/screely-1629209914683.png)
+
+This might need to be done form time to time to re-initialize our API inside of Logica. Now, re-add the API and you should see the list of all three services.
+
+![The three services we made registered in Logica](../../../.gitbook/assets/screely-1629209985083.png)
+
+Click on the "patient view with Reynolds risk score" service. To view the three indicator thresholds, and the three risk levels, to two of which we make a MedicationRequest, we need to view three different patients with three different risk scores.
+
+To view the "critical" indicator, and a patient with a high risk score, select "Adams, Daniel X." This will produce the following set of cards.
+
+![Daniel&apos;s risk score is considered critical](../../../.gitbook/assets/screely-1629210070406.png)
+
+Here we see three buttons: two links, and a suggestion with an action. From the top - the first button is a `smart` link that launches the cardiac health SMART app that we registered. Below that is a `suggestion`,  with the `action` of prescribing 1o MG of Xarelto. The final button is a `absolute` link that takes us to an external link to learn more about blood thinners.
+
+After selecting the SMART app, we should be directed to an application screen that looks like this.
+
+![4-step cardiology report](../../../.gitbook/assets/screely-1629210143233.png)
+
+The SMART app serves to provide more context and enhanced functionality to the decision support of the service. SMART apps are especially useful if information would be hard to convey with cards alone.
+
+If we re-launch this service with the patient "Alexis, Aaron," we should see the following set of cards.
+
+![Aaron&apos;s risk score considered low](../../../.gitbook/assets/screely-1629210237158.png)
+
+If we we-launch the service with the patient "Coleman, Steven F," we should see the following card set.
+
+![Steven&apos;s risk score is considered medium-high](../../../.gitbook/assets/screely-1629210305134.png)
+
+This set of cards is relatively similar to the cards sent in response to viewing Daniel's EHR, but is colored yellow, signifying it is less mild. It also suggests an action where the user could prescribe Aspirin instead of Xarelto, and sends an `absolute` link that sends the user to a page where they can learn more about aspirin.
+
+## Conclusion
+
+Congratulations! You have reached the end of this walkthrough. Check out some other resources below.
+
+{% page-ref page="../smart.md" %}
+
+{% page-ref page="../../../book/build/" %}
+
 ## References
 
 \[1\] Ridker, P. M., Paynter, N. P., Rifai, N., Gaziano, J. M., & Cook, N. R. \(2008\). C-reactive protein and parental history improve global cardiovascular risk prediction: the Reynolds Risk Score for men. Circulation, 118\(22\), 2243–2251. [https://doi.org/10.1](https://doi.org/10.1)
@@ -643,6 +713,6 @@ Run the server with `npm run start`.
 \[5\] [https://www.fairview.org/fv/groups/internet/documents/web\_content/s\_039537.pdf](https://www.fairview.org/fv/groups/internet/documents/web_content/s_039537.pdf)
 
 {% hint style="warning" %}
-This walkthrough is for educational purposes only. Although it is designed with a degree of medical accuracy, this is purely to enhance the experience and is not suitable for used in a real-life medical situation or environment. 
+This walkthrough is for educational purposes only. Although it is designed with a degree of medical accuracy, this is purely to enhance the experience. The code in this walkthrough is not suitable for use in a real-life medical situation or environment. 
 {% endhint %}
 

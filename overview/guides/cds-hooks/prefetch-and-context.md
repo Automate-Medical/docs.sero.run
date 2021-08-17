@@ -1,5 +1,5 @@
 ---
-description: Processing request data
+description: 'Processing request data, and providing simple decision support with Sero'
 ---
 
 # Prefetch and Context
