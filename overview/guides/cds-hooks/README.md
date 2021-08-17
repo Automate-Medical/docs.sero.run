@@ -12,6 +12,14 @@ Looking for an explanation of CDS Hooks or Decision Support APIs? We cover a bro
 
 {% page-ref page="../../../book/build/decision-support-apis.md" %}
 
+## Overview
+
+{% hint style="info" %}
+The complete source code for this example is available at **example/cds-hooks-api-guide**. CDS Clients can connect to the service for test purposes only at [**sero-goodrx-cds.fly.dev/cds-services**](https://sero-goodrx-cds.fly.dev/cds-services). 
+{% endhint %}
+
+{% embed url="https://www.loom.com/share/4e0c0b33506d40adbff42107580832e2" caption="An introduction to what we\'ll be building" %}
+
 ## Getting started [🏁](https://emojipedia.org/chequered-flag/)
 
 In this walkthrough, we will build three [decision support APIs](../../../book/build/decision-support-apis.md) growing in complexity. We will use Sero to implement our APIs according to the CDS Hooks specification.
