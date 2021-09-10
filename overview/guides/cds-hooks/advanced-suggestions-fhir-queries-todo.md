@@ -6,7 +6,7 @@ description: How to build advanced decision support with Sero
 
 ## What we'll be building
 
-In this section, we'll be building a CDS service that calculates the [Reynolds Risk score](http://www.reynoldsriskscore.org/) of a patient based on recent clinical observations. Based on the calculation, the service will return a suggestion that the patient be prescribed a medication to manage their high risk, a link to more information about the medication, and a link to a SMART app to further work with the information. 
+In this section, we'll be building a CDS service that calculates the [Reynolds Risk score](http://www.reynoldsriskscore.org/) of a patient based on recent clinical observations. Based on the calculation, the service will return a suggestion that suggests the patient be prescribed a medication to manage their high risk. A link to more information about the medication, and a link to a SMART app to further work with the information will be provided as well. 
 
 This service will also be invoked with the `patient-view` hook. 
 
@@ -16,7 +16,7 @@ You can find the complete source for this guide in the Sero project at [**exampl
 
 ## Suggestions and links
 
-We'll first take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0/#card-attributes) of a `Card` from the CDS Hooks specification. There are attributes of CDS cards that can enhance a service's decision support that we haven't worked with yet. Two of those attributes are **suggestions** and **links.** 
+We'll first take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0/#card-attributes) of a `Card` from the CDS Hooks specification. There are attributes of cards that can enhance a service's decision support that we haven't worked with yet. Two of those attributes are **suggestions** and **links.** 
 
 ![](../../../.gitbook/assets/suggestions.png)
 
@@ -24,9 +24,9 @@ We'll first take a closer look at the [attributes](https://cds-hooks.hl7.org/1.0
 
 ### Suggestions and actions 
 
-What if we wanted to provide more interactive decision support, such as suggesting the user read further into an issue, or even prescribe a medication? This is what **suggestions** are for.
+If we wanted to provide more interactive decision support, such as suggesting that a user read further into an issue, or even prescribe a medication, we'd use **suggestions**.
 
-Suggestions are described by three attributes.  Only the `label`property - a human-readable description of the action - is required. The following is an example of a suggestion with the `label` and `actions` properties. The `action` is a `MedicationRequest` `POST` request. 
+Suggestions are described by three attributes. Only the `label`property - a human-readable description of the action taken by "taking" a suggestion - is required. The following is an example of a suggestion with the `label` and `actions` properties. The `action` is a `MedicationRequest` `POST` request. 
 
 ```javascript
 suggestions: [
@@ -56,11 +56,11 @@ suggestions: [
 
 ### Links
 
-What if we wanted to provide links to external SMART apps or web pages? This is what **links** are for. 
+If we wanted to provide links to external SMART apps or web pages, we would use **links**. 
 
 Links come in two varieties. `absolute` links take the user to an external website, such as a reference page or a paper. `smart` links are used to launch external SMART applications. SMART applications are healthcare applications designed to use the [SMART on FHIR API](https://smarthealthit.org/about-smart-2/). Think of them as healthcare applications that we can launch from a `Card` when we need enhanced functionality to deal with present FHIR data.
 
-Below is an example of an `absolute` link to google.com.
+Below is an example of an `absolute` link to [google.com](https://www.google.com).
 
 ```javascript
 links: [
@@ -77,8 +77,8 @@ Below is an example of a `smart` link to an external SMART app.
 ```javascript
 links: [
   {
-    label: "ASCVD Risk Calculator",
-    url: "https://launch.smarthealthit.org/v/r2/login?client_id=my_web_app&response_type=code&scope=patient%2FPatient.read%20patient%2FObservation.read%20launch%20online_access%20openid%20profile&redirect_uri=https%3A%2F%2Fengineering.cerner.com%2Fascvd-risk-calculator%2F&state=7d85ba03-ff89-7ec6-d3e6-38bc844ba085&aud=&launch=eyJhIjoxLCJmIjpmYWxzZSwiZyI6ZmFsc2UsImQiOi0xfQ&provider=&login_type=provider&aud_validated=1",
+    label: "Launch the CarePassport patient portal",
+    url: "https://carepassport.net/FHIR/launch.html",
     type: "smart",
   },
 ],
@@ -90,15 +90,15 @@ links: [
 
 As opposed to the previous two sections, the service we'll build in this section is tailor-made to provide useful decision support for a real-world issue. 
 
-The [**Reynolds Risk Score**](http://www.reynoldsriskscore.org/) is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease within the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, cholesterol levels, cigarette smoking status. 
+The [**Reynolds Risk Score**](http://www.reynoldsriskscore.org/) is a metric designed to predict someone's risk of having a future heart attack, stroke, or other major heart disease within the next 10 years. It uses different patient observations to make its assessment, including smoking status, systolic blood pressure, and cholesterol levels. 
 
-The service we build will process the most recent patient observations in order to calculate this score. By some metric, the service will make suggestions to prescribe certain medications if the patients risk is high. Finally, the service will provide a link to a SMART app to further work with the support information that your service provided.
+The service we'll build will calculate this risk score based on the most recent patient observations. By some metric, the service will make suggestions to prescribe certain medications if the patients risk is high. Finally, the service will provide a link to a SMART app to further work with the support information that your service provided.
 
 ### What is a SMART app?
 
-A SMART app is a class of healthcare application that's designed to be used in healthcare settings that fit the requirements laid out by [SMART on FHIR](https://docs.smarthealthit.org/) - an open healthcare API. In this example, we are going to register a SMART app that takes a patients EHR, calculates that patients risk score, and displays helpful information to go along side it. Although the service that we create will also calculate that same patients risk score, the SMART app we will connect to will provide _enhanced_ support, such as helpful visualizations, and interventions that could decrease the patient's score. 
+A SMART app is a new class of healthcare application that's designed to be used in healthcare settings that fit the requirements laid out by [SMART on FHIR](https://docs.smarthealthit.org/) - an open healthcare API. In this example, we are going to register a SMART app called [_Cardiac Risk_](https://apps.smarthealthit.org/app/cardiac-risk)_._ Although the service that we create will also calculate a patients risk score, The _Cardiac Risk_ application will provide _enhanced_ support, such as helpful visualizations, and interventions that could decrease the patient's score. 
 
-We are going to use a SMART app called "cardiac-risk." This is a version of the [cardiac risk SMART app](https://apps.smarthealthit.org/app/cardiac-risk) that we've modified to work with the latest version of FHIR \(you can find the code [here](https://github.com/Automate-Medical/cardiac-risk-app/tree/feature/fly-hosting)\).
+The version of Cardiac Risk that we'll be using we've modified to work with the latest version of FHIR \(you can find the code [here](https://github.com/Automate-Medical/cardiac-risk-app/tree/feature/fly-hosting)\).
 
 ![Cardiac-risk smart app](../../../.gitbook/assets/screely-1629210143233.png)
 
@@ -139,13 +139,13 @@ const options = {
 ```
 {% endcode %}
 
-The prefetch template includes four FHIR path search queries for observations matching the loinc code in the search query. For example, to fetch all of the Observations where the patients blood pressure was measured, and sort by date, you use `Observation?code=http://loinc.org|55284-4&_sort=date`. 
+The prefetch template includes four FHIR path search queries for observations matching the loinc code in the search query. For example, to fetch all of the Observations where the patients blood pressure was measured, and sort by date, you'd use `Observation?code=http://loinc.org|55284-4&_sort=date`. 
 
 This will return a `Patient` and five`Bundle` FHIR resources.
 
 ### Helper functions
 
-To calculate the risk score, we'll be using the following two formulas. The formula differs based on your gender.
+To calculate the risk score, we'll be using the following two formulas. This is because the calculation differs by gender.
 
 ![Reynolds Risk Score for women \[1\]](../../../.gitbook/assets/ayy_reynolds-1-.png)
 
@@ -206,7 +206,7 @@ export function reynoldsRiskScore(
     gender == "female"
       ? (1 - Math.pow(0.98634, Math.exp(B - 22.325))) * 100
       : (1 - Math.pow(0.899, Math.exp(B - 33.097))) * 100;
-  // precision rounding (whole numbers)
+  // precision rounding
   Math.round(
     result < 10
       ? (result = result.toPrecision(1))
@@ -342,8 +342,12 @@ Import these functions into `suggestions-links-fhir.js`.
 import {
   reynoldsRiskScore,
   getAge,
+  getGender,
   getBloodPressure,
-  getValue,
+  getHscrp,
+  getCholesterolAndHdl,
+  getSmokingStatus,
+  riskThreshold,
 } from "./util.js";
 ```
 {% endcode %}
@@ -356,17 +360,132 @@ The risk score calculation also includes values based on observations of family 
 
 The `Card` class has an `indicator` parameter whose value can either be `info`, `warning`, or `critical`. Up until this point we've only used the `info` value, but in this example we are going to change this value dynamically based on the risk score value.
 
-Take a look at `getRiskIndicator()` inside of `util.js`. Based on the value of the risk score, the function returns either `info`, `warning`, or `critical` based on where the risk score falls in the threshold \[3\]\[4\]. What this means is that when we view the card response inside of Logica and the card's indicator is set to `warning`, or `critical` some of the card's elements will be changed to yellow or red respectively, indicating more immediate levels of urgency.
+Take a look at `getRiskIndicator()` inside of `util.js`. Based on the value of the risk score, the function returns either `info`, `warning`, or `critical` based on where the risk score falls in the threshold \[3\]\[4\]. When we view the card response inside of Logica and the card's indicator is set to `warning`, or `critical`, some of the card's elements will be changed to yellow or red respectively, indicating more immediate levels of urgency.
 
 {% hint style="warning" %}
 These thresholds are based on literature that determined the thresholds by doing studies that involved female participants only. In this walkthrough, for the sake of simplicity, we use the same thresholds for both men and women.
 {% endhint %}
 
-### Changing card suggestions and links based on the risk score
+Similarly, if the risk score falls into the `warning` threshold, we are going to send the user the risk score, a suggestion that the user be considered for a prescription for aspirin, an `absolute` link for more information on the medication, and a `smart` link to a SMART app that let's the user interactively work with the results of the risk score.
 
-We will take a similar approach when designing the suggestions and links we send to the user depending on the value of the risk score. If the risk score falls into the `warning` threshold, we are going to send the user the risk score, a suggestion that the user be considered for a prescription for aspirin, an `absolute` link for more information on the medication, and a `smart` link to a SMART app that let's the user interactively work with the results of the risk score.
+Finally, f the risk score falls into the `critical` threshold, we are going to send the user the same set of information, but with an additional suggestion that will suggest the user be prescribed Xarelto, which is an anticoagulant. In addition, the `absolute` link will take the user to a page with more information on the medication. 
 
-Furthermore, if the risk score falls into the `critical` threshold, we are going to send the user the same set of information, but the suggestion will be for requesting a prescription of Xarelto, which is an anticoagulant. In addition, the `absolute` link will take the user to a page with more information on the medication. 
+### Data.js
+
+Depending on the `type` of action, that action might need to include a FHIR resource. For example, if we wanted our action to prescribe a new medication, our action would need a `resource` attribute, whose value is a FHIR resource bundle. The type of this resource would be a `MedicationRequest`. A similar process would be needed if we wanted to perform an `update` action. If, and only if, the type of action was a `delete` action, we would not need a `resource` attribute. 
+
+This service's two actions will both, when taken, request that a medication be prescribed. They are both `create` actions, and thus will need corresponding FHIR resource bundles. Both actions will be put in an object called `suggestionData` inside of a file called `data.js`. 
+
+Create a new file called `data.js` and paste in the following code.
+
+{% code title="data.js" %}
+```javascript
+export const suggestionData = {
+  bloodThinner: {
+    label: "Create a prescription for Rivaroxaban (Xarelto) 10 MG",
+    actions: [
+      {
+        type: "create",
+        description: "Create a prescription for Rivaroxaban (Xarelto) 10 MG",
+        resource: {
+          resourceType: "MedicationRequest",
+          id: "3ba900b2-a795-40a0-8aae-1cfbb02e3ac1",
+          status: "active",
+          intent: "order",
+          medicationCodeableConcept: {
+            coding: [
+              {
+                system: "http://www.nlm.nih.gov/research/umls/rxnorm",
+                code: "429503",
+                display: "Rivaroxaban 10 MG",
+              },
+            ],
+            text: "Rivaroxaban 10 MG",
+          },
+          subject: {
+            reference: "urn:uuid:b626136e-aff8-4711-8279-536f07f197b5",
+          },
+          encounter: {
+            reference: "urn:uuid:1d05e39c-e269-438c-a9b2-1a485953a2c8",
+          },
+          authoredOn: "1960-10-23T22:19:43-04:00",
+          requester: {
+            reference: "urn:uuid:0000016d-3a85-4cca-0000-00000000c5b2",
+            display: "Dr. Susan A Clark",
+          },
+          reasonReference: [
+            {
+              reference: "urn:uuid:f810df60-74b0-4745-8fb5-cfe7e4c84a1e",
+            },
+          ],
+        },
+      },
+    ],
+    request: {
+      method: "POST",
+      url: "MedicationRequest",
+    },
+  },
+  aspirin: {
+    label: "Create a prescription for Aspirin 80 MG oral Tablet",
+    actions: [
+      {
+        type: "create",
+        description: "Create a prescription for Aspirin 80 MG Oral Tablet",
+        resource: {
+          resourceType: "MedicationRequest",
+          id: "16401a10-e311-4287-9986-3988f81b3d7e",
+          status: "active",
+          intent: "order",
+          medicationCodeableConcept: {
+            coding: [
+              {
+                system: "http://www.nlm.nih.gov/research/umls/rxnorm",
+                code: "429503",
+                display: "Aspirin 80 MG",
+              },
+            ],
+            text: "Aspirin 80 MG",
+          },
+          subject: {
+            reference: "urn:uuid:b626136e-aff8-4711-8279-536f07f197b5",
+          },
+          encounter: {
+            reference: "urn:uuid:1d05e39c-e269-438c-a9b2-1a485953a2c8",
+          },
+          authoredOn: "1960-10-23T22:19:43-04:00",
+          requester: {
+            reference: "urn:uuid:0000016d-3a85-4cca-0000-00000000c5b2",
+            display: "Dr. Susan A Clark",
+          },
+          reasonReference: [
+            {
+              reference: "urn:uuid:f810df60-74b0-4745-8fb5-cfe7e4c84a1e",
+            },
+          ],
+        },
+      },
+    ],
+    request: {
+      method: "POST",
+      url: "MedicationRequest",
+    },
+  },
+};
+```
+{% endcode %}
+
+Finally, import `data.js` inside of `suggestions-links-fhir.js`. 
+
+{% code title="suggestions-links-fhir.js" %}
+```javascript
+import { suggestionData } from "./data.js";
+```
+{% endcode %}
+
+{% hint style="warning" %}
+For this example, the FHIR resource bundles serve as placeholders. They should not be used in production. 
+{% endhint %}
 
 ### Service handler
 
@@ -381,6 +500,7 @@ Below is the final result of the request handler.
 {% code title="suggestions-links-fhir.js" %}
 ```javascript
 const handler = async (request) => {
+  const context = request.context;
   const data = request.prefetch;
   const age = getAge(data.patient);
   const gender = getGender(data.patient);
@@ -399,205 +519,79 @@ const handler = async (request) => {
     smokingStatus
   );
   const riskThresholdString = riskThreshold(riskScore[0]);
-  // defining the cards
-  let cards = [];
-  if (riskScore[1] == "info") {
-    // push just the link card if the patients score is on the lower side
-    cards.push(
-      new Card({
-        detail: `More information on this score:`,
-        source: {
-          label: "Reynold's Risk Score",
-          url: "https://pubmed.ncbi.nlm.nih.gov/17299196/",
+  /**
+   * Defining the cards.
+   * This assumes that the reynolds risk score card will be sent every time
+   */
+  let cards = [
+    new Card({
+      detail: `More information on this score:`,
+      source: {
+        label: "Reynold's Risk Score",
+        url: "https://pubmed.ncbi.nlm.nih.gov/17299196/",
+      },
+      summary: `Reynolds risk score: ${riskScore[0]}`,
+      indicator: riskScore[1],
+      links: [
+        {
+          label: "Launch cardiac health SMART app",
+          url: "https://smart-cardiac-risk.fly.dev/launch.html",
+          type: "smart",
         },
-        summary: `Reynolds risk score: ${riskScore[0]}`,
-        indicator: riskScore[1],
-        links: [
-          {
-            label: "Launch cardiac health SMART app",
-            url: "https://divine-meadow-3697.fly.dev/launch.html",
-            type: "smart",
-          },
-        ],
-      })
-    );
-  } else if (riskScore[1] == "warning") {
-    // push the link card
+      ],
+    }),
+  ];
+  /**
+   * Next, handle adding suggestions
+   */
+  if (riskScore[1] === "warning" || riskScore[1] === "critical") {
     cards.push(
       new Card({
-        detail: `More information on this score:`,
-        source: {
-          label: "Reynold's Risk Score",
-          url: "https://pubmed.ncbi.nlm.nih.gov/17299196/",
-        },
-        summary: `Reynolds risk score: ${riskScore[0]}`,
-        indicator: riskScore[1],
-        links: [
-          {
-            label: "Launch cardiac health SMART app",
-            url: "https://divine-meadow-3697.fly.dev/launch.html",
-            type: "smart",
-          },
-        ],
-      })
-    );
-    // push the suggestion card
-    cards.push(
-      new Card({
-        detail: `This patient has a ${riskThresholdString} risk of cardiovascular disease over the next 10 years. Consider prescribing an anti-inflammatory like aspirin.`,
+        detail: `This patient has a ${riskThresholdString} risk of cardiovascular disease over the next 10 years. ${
+          riskScore[1] === "warning"
+            ? "Consider prescribing an anti-inflammatory like aspirin."
+            : "Consider prescribing an anti-inflammatory like aspirin, or even a blood thinner like Xarelto."
+        } `,
         source: {
           label: "Automate Medical, Inc.",
           url: "https://www.automatemedical.com/",
+          topic: {
+            display: "Medication alert",
+            version: "0.0.1",
+          },
         },
         indicator: riskScore[1],
         summary: "Medication alert",
-        suggestions: [
-          {
-            label: "Create a prescription for Aspirin 80 MG oral Tablet",
-            actions: [
-              {
-                type: "create",
-                description:
-                  "Create a prescription for Aspirin 80 MG Oral Tablet",
-                resource: {
-                  resourceType: "MedicationRequest",
-                  id: "16401a10-e311-4287-9986-3988f81b3d7e",
-                  status: "active",
-                  intent: "order",
-                  medicationCodeableConcept: {
-                    coding: [
-                      {
-                        system: "http://www.nlm.nih.gov/research/umls/rxnorm",
-                        code: "429503",
-                        display: "Aspirin 80 MG",
-                      },
-                    ],
-                    text: "Aspirin 80 MG",
-                  },
-                  subject: {
-                    reference: "urn:uuid:b626136e-aff8-4711-8279-536f07f197b5",
-                  },
-                  encounter: {
-                    reference: "urn:uuid:1d05e39c-e269-438c-a9b2-1a485953a2c8",
-                  },
-                  authoredOn: "1960-10-23T22:19:43-04:00",
-                  requester: {
-                    reference: "urn:uuid:0000016d-3a85-4cca-0000-00000000c5b2",
-                    display: "Dr. Susan A Clark",
-                  },
-                  reasonReference: [
-                    {
-                      reference:
-                        "urn:uuid:f810df60-74b0-4745-8fb5-cfe7e4c84a1e",
-                    },
-                  ],
+        suggestions:
+          riskScore[1] === "warning"
+            ? [suggestionData.aspirin]
+            : [suggestionData.aspirin, suggestionData.bloodThinner],
+        selectionBehavior: "any",
+        links:
+          riskScore[1] === "warning"
+            ? [
+                {
+                  label: "More information on aspirin",
+                  url: "https://medlineplus.gov/druginfo/meds/a682878.html",
+                  type: "absolute",
                 },
-              },
-            ],
-            request: {
-              method: "POST",
-              url: "MedicationRequest",
-            },
-          },
-        ],
-        links: [
-          {
-            label: "More information on aspirin",
-            url: "https://medlineplus.gov/druginfo/meds/a682878.html",
-            type: "absolute",
-          },
-        ],
-      })
-    );
-  } else {
-    // push the link card
-    cards.push(
-      new Card({
-        detail: `More information on this score:`,
-        source: {
-          label: "Reynold's Risk Score",
-          url: "https://pubmed.ncbi.nlm.nih.gov/17299196/",
-        },
-        summary: `Reynolds risk score: ${riskScore[0]}`,
-        indicator: riskScore[1],
-        links: [
-          {
-            label: "Launch cardiac health SMART app",
-            url: "https://divine-meadow-3697.fly.dev/launch.html",
-            type: "smart",
-          },
-        ],
-      })
-    );
-    // push the suggestion card
-    cards.push(
-      new Card({
-        detail: `This patient has a ${riskThresholdString} risk of cardiovascular disease over the next 10 years. Consider prescribing a anticoagulant like Xarelto.`,
-        source: {
-          label: "Automate Medical, Inc.",
-          url: "https://www.automatemedical.com/",
-        },
-        indicator: riskScore[1],
-        summary: "Medication alert",
-        suggestions: [
-          {
-            label: "Create a prescription for Rivaroxaban (Xarelto) 10 MG",
-            actions: [
-              {
-                type: "create",
-                description:
-                  "Create a prescription for Rivaroxaban (Xarelto) 10 MG",
-                resource: {
-                  resourceType: "MedicationRequest",
-                  id: "3ba900b2-a795-40a0-8aae-1cfbb02e3ac1",
-                  status: "active",
-                  intent: "order",
-                  medicationCodeableConcept: {
-                    coding: [
-                      {
-                        system: "http://www.nlm.nih.gov/research/umls/rxnorm",
-                        code: "429503",
-                        display: "Rivaroxaban 10 MG",
-                      },
-                    ],
-                    text: "Rivaroxaban 10 MG",
-                  },
-                  subject: {
-                    reference: "urn:uuid:b626136e-aff8-4711-8279-536f07f197b5",
-                  },
-                  encounter: {
-                    reference: "urn:uuid:1d05e39c-e269-438c-a9b2-1a485953a2c8",
-                  },
-                  authoredOn: "1960-10-23T22:19:43-04:00",
-                  requester: {
-                    reference: "urn:uuid:0000016d-3a85-4cca-0000-00000000c5b2",
-                    display: "Dr. Susan A Clark",
-                  },
-                  reasonReference: [
-                    {
-                      reference:
-                        "urn:uuid:f810df60-74b0-4745-8fb5-cfe7e4c84a1e",
-                    },
-                  ],
+              ]
+            : [
+                {
+                  label: "More information on aspirin",
+                  url: "https://medlineplus.gov/druginfo/meds/a682878.html",
+                  type: "absolute",
                 },
-              },
-            ],
-            request: {
-              method: "POST",
-              url: "MedicationRequest",
-            },
-          },
-        ],
-        links: [
-          {
-            label: "More information on blood thinners",
-            url: "https://medlineplus.gov/bloodthinners.html",
-            type: "absolute",
-          },
-        ],
+                {
+                  label: "More information on blood thinners",
+                  url: "https://medlineplus.gov/bloodthinners.html",
+                  type: "absolute",
+                },
+              ],
       })
     );
   }
+  // return the set of cards
   return {
     cards: cards,
   };
@@ -672,9 +666,9 @@ Click on the "patient view with Reynolds risk score" service. To view the three 
 
 To view the "critical" indicator, and a patient with a high risk score, select "Adams, Daniel X." This will produce the following set of cards.
 
-![Daniel&apos;s risk score is considered critical](../../../.gitbook/assets/screely-1629210070406.png)
+![Daniel&apos;s risk score is marked as critical](../../../.gitbook/assets/screely-1631294380204.png)
 
-Here we see three buttons: two links, and a suggestion with an action. From the top - the first button is a `smart` link that launches the cardiac health SMART app that we registered. Below that is a `suggestion`,  with the `action` of prescribing 1o MG of Xarelto. The final button is a `absolute` link that takes us to an external link to learn more about blood thinners.
+Here we see five buttons: three links, and two suggestions. From the top - the first button is a `smart` link that launches the cardiac health SMART app that we registered. Below that is a pair of `suggestion`s,  with the `action` of prescribing 10 MG of Xarelto, and 80MG of Aspirin. The final two buttons are `absolute` links that takes us to an external link to learn more about blood the suggestion medication prescription.
 
 After selecting the SMART app, we should be directed to an application screen that looks like this.
 
@@ -684,11 +678,11 @@ The SMART app serves to provide more context and enhanced functionality to the d
 
 If we re-launch this service with the patient "Alexis, Aaron," we should see the following set of cards.
 
-![Aaron&apos;s risk score considered low](../../../.gitbook/assets/screely-1629210237158.png)
+![Aaron&apos;s risk score is marked as low](../../../.gitbook/assets/screely-1629210237158.png)
 
 If we we-launch the service with the patient "Coleman, Steven F," we should see the following card set.
 
-![Steven&apos;s risk score is considered medium-high](../../../.gitbook/assets/screely-1629210305134.png)
+![Steven&apos;s risk score is marked as medium-high](../../../.gitbook/assets/screely-1629210305134.png)
 
 This set of cards is relatively similar to the cards sent in response to viewing Daniel's EHR, but is colored yellow, signifying it is less mild. It also suggests an action where the user could prescribe Aspirin instead of Xarelto, and sends an `absolute` link that sends the user to a page where they can learn more about aspirin.
 
