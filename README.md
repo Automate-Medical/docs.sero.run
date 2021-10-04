@@ -1,17 +1,12 @@
----
-description: "Sero is a toolkit for devs building in health by Automate Medical. With Sero, you can build patient apps and decision support APIs in JavaScript. \U0001F680"
----
-
 # Overview
 
-## Sero is a toolkit for devs building in health
+![](.gitbook/assets/screen-shot-2021-10-04-at-1.46.50-pm.png)
 
-* **🏍️** Launch **SMART on FHIR Apps** and **Decision Support API**s fast
-* 🔥 Work with **modern** **JavaScript** \(**ES2020** and **TypeScript**\)
-* 😎 Easy local **FHIR REST server** for testing
-* 📖 **Open source** license with development sponsored by ****[**Automate Medical**](https://www.automatemedical.com/)\*\*\*\*
+## A Node.js framework for FHIR
 
-![](.gitbook/assets/group-149.png)
+* 🏍️ **SMART Auth** and **CDS Hooks** implemented as Fastify plugins
+* 🔥 **Modern JavaScript** \(**ES2020** and **TypeScript**\)
+* 📖 **Open source license**
 
 ## Where you should go first
 
